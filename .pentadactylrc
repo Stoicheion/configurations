@@ -1,0 +1,11 @@
+"1.0rc1
+
+loadplugins '\.(js|penta)$'
+group user
+source $HOME/.config/private/pentadactylrc
+command! -nargs=* sysadmin open gentoo-wiki <args> | archwiki <args> | funtoo-linux-wiki <args> | unofficial-gentoo-wiki <args>
+set defsearch=startpage-ssl
+set editor='urxvt -e vim -n <file>'
+set hintkeys=asdfjkl;ghqwertyuiopzxcvbnm,./
+
+" vim: set ft=pentadactyl:
