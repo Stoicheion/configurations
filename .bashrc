@@ -16,8 +16,7 @@ fi
 
 
 # Put your fun stuff here.
-EDITOR=/usr/bin/vim
-export EDITOR=/usr/bin/vim
+export EDITOR=vim
 source $HOME/.config/private/bashrc
 set -o vi
 
