@@ -14,6 +14,9 @@ Urxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 5000
 URxvt.matcher.button: 1
 
+xterm*font: xft:inconsolata:size=10:antialias=true
+
+
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX 16/8 TERMCOL XTERM/HEX L*A*B RGB HSB
@@ -89,3 +92,6 @@ URxvt.matcher.button: 1
 !! white dark/light
 *color7: S_base2
 *color15: S_base3Rxvt.keysym.0xff14:      perl:urxvi
+
+URxvt*transparent:true
+URxvt*shading: 40
