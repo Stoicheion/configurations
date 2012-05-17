@@ -65,11 +65,21 @@
 	nnoremap <silent> <Space> :call SetWindowMode()<CR>
 	autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<CR>
 	nnoremap <silent> <leader> :call PerfectFormat()<CR>
+	"{{{ Movement
+		noremap H 0
+		noremap J <C-D>z.
+		noremap K <C-U>z.
+		noremap L $
+		noremap <C-H> H
+		noremap <C-L> L
+	"}}}
+	noremap <C-J> J "J no longer joins lines together.
+	noremap gK K "K no longer opens a manpage for the word under the cursor.
 "}}}
 
 "Window Management {{{
 	let g:WinModeSet = 0
-"autocmd VimResized * call WindowModeStatus()
+	"autocmd VimResized * call WindowModeStatus()
 
 	function! WinMove(key) 
 	  let t:curwin = winnr()
