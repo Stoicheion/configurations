@@ -1,4 +1,4 @@
-"Miscellaneous {{{
+"{{{ Miscellaneous
 	filetype plugin indent on
 	set confirm
 	set loadplugins
@@ -16,7 +16,7 @@
 	set viminfo='20,\"500
 "}}}
 
-"Indenting and Formatting {{{
+"{{{ Indenting and Formatting
 	set autoindent
 	set smartindent
 	set cindent
@@ -41,7 +41,7 @@
 
 "}}}
 
-"Display settings {{{
+"{{{ Display settings
 	set shortmess+=I
 	set title
 	set background=dark
@@ -59,9 +59,9 @@
 	set fdm=indent
 "}}}
 
-"Mappings {{{
+"{{{ Mappings
 	map Y y$
-	nnoremap <C-L> :nohlsearch<CR><C-L>
+	nnoremap <C-U> :nohlsearch<CR><C-L>
 	nnoremap <silent> <Space> :call SetWindowMode()<CR>
 	autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<CR>
 	nnoremap <silent> <leader> :call PerfectFormat()<CR>
@@ -77,7 +77,7 @@
 	noremap gK K "K no longer opens a manpage for the word under the cursor.
 "}}}
 
-"Window Management {{{
+"{{{ Window Management
 	let g:WinModeSet = 0
 	"autocmd VimResized * call WindowModeStatus()
 
@@ -138,11 +138,10 @@
 
 "}}}
 
-"Plugins {{{
+"{{{ Plugins
 	let g:ConqueTerm_TERM = 'vt100'
 	let g:snippets_dir = $HOME . "/.vim/snippets"
 	"let g:solarized_termtrans = 1
 	"let g:solarized_termcolors=256
 	colorscheme solarized
 "}}}
-
