@@ -25,3 +25,6 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.5.3:/usr/games/bin:/$HOME/bin
+export EDITOR=vim
