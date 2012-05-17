@@ -38,7 +38,6 @@
 			normal gg
 		endif
 	endfunction
-
 "}}}
 
 "{{{ Display settings
@@ -135,7 +134,6 @@
 		let g:WinModeSet = 0
 		call WindowModeStatus()
 	endfunction
-
 "}}}
 
 "{{{ Plugins

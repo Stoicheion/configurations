@@ -6,4 +6,11 @@ set convert-meta off
   
   # mode in everything that uses readline
 set editing-mode vi
-set keymap vi
+set keymap vi-command
+$if mode=vi
+    set keymap vi-command
+    "gg": beginning-of-history
+    "G": end-of-history
+    "H": beginning-of-line
+    "L": end-of-line
+$endif
