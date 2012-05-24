@@ -27,7 +27,7 @@
 	autocmd BufNewFile,BufRead *.h let b:FiletypeForFormatting = 'C'
 	autocmd BufNewFile,BufRead *.c let b:FiletypeForFormatting = 'C'
 
-	function! PerfectFormat()
+	function PerfectFormat()
 		if (b:FiletypeForFormatting == 'C')
 			set formatprg=indent\ -npsl\ -npcs
 			normal gggqG
@@ -59,28 +59,33 @@
 "}}}
 
 "{{{ Mappings
-	map Y y$
-	nnoremap <C-U> :nohlsearch<CR><C-L>
-	nnoremap <silent> <Space> :call SetWindowMode()<CR>
-	autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<CR>
-	nnoremap <silent> <leader> :call PerfectFormat()<CR>
-	"{{{ Movement
-		noremap H 0
-		noremap J <C-D>z.
-		noremap K <C-U>z.
-		noremap L $
-		noremap <C-H> H
-		noremap <C-L> L
-	"}}}
-	noremap <C-J> J "J no longer joins lines together.
-	noremap gK K "K no longer opens a manpage for the word under the cursor.
+	function Set_Custom_Map()
+		map Y y$
+		nnoremap <silent> <C-U> :nohlsearch<CR><C-L>
+		nnoremap <silent> <Space> :call SetWindowMode()<CR>
+		autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<CR>
+		nnoremap <silent> <leader> :call PerfectFormat()<CR>
+		"{{{ Movement
+			noremap H 0
+			noremap J <C-D>z.
+			noremap K <C-U>z.
+			noremap L $
+			noremap <C-H> H
+			noremap <C-L> L
+		"}}}
+		noremap <C-J> J
+		"J no longer joins lines together.
+		noremap gK K
+		"K no longer opens a manpage for the word under the cursor.
+	endfunction
+	autocmd VimEnter * call Set_Custom_Map()
 "}}}
 
 "{{{ Window Management
 	let g:WinModeSet = 0
 	"autocmd VimResized * call WindowModeStatus()
 
-	function! WinMove(key) 
+	function WinMove(key) 
 	  let t:curwin = winnr()
 	  exec "wincmd ".a:key
 	  if (t:curwin == winnr()) "we havent moved
@@ -93,7 +98,7 @@
 	  endif
 	endfunction
 
-	function! WindowModeStatus()
+	function WindowModeStatus()
 		if (g:WinModeSet == 1)
 			echo "-- WINDOW --"
 		else
@@ -101,7 +106,7 @@
 		endif
 	endfunction
 
-	function! SetWindowMode()
+	function SetWindowMode()
 		if (g:WinModeSet == 0)
 			let g:WinModeSet = 1
 			nnoremap <silent> h :call WinMove('h')<CR>
@@ -118,7 +123,7 @@
 		call WindowModeStatus()
 	endfunction
  
-	function! UnsetWindowMode()
+	function UnsetWindowMode()
 		if (g:WinModeSet == 1)
 			unmap h
 			unmap j
@@ -133,6 +138,7 @@
 		endif
 		let g:WinModeSet = 0
 		call WindowModeStatus()
+		call Set_Custom_Map()
 	endfunction
 "}}}
 
