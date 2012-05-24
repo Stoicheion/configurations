@@ -1,0 +1,5 @@
+SoundDriver = ALSA:OSS:SNDIO:JACK:null
+AlsaDevice = default
+Keymap = keymap
+XTermTheme = transparent-background
+Theme = transparent-background
