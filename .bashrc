@@ -17,6 +17,11 @@ fi
 
 # Put your fun stuff here.
 export EDITOR=vim
-source $HOME/.config/private/bashrc
+
+if [ -f $HOME/.config/private/bashrc ]
+then
+	source $HOME/.config/private/bashrc
+fi
+
 set -o vi
 

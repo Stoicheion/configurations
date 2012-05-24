@@ -1,7 +1,12 @@
 autoload -U compinit promptinit
 compinit
 promptinit; prompt gentoo
-source $HOME/.config/private/zshrc
+
+if [[ -f $HOME/.config/private/zshrc ]];
+then
+	source $HOME/.config/private/zshrc
+fi
+
 bindkey -v
 bindkey -M vicmd -rp '^['
 bindkey -M vicmd 'H' vi-beginning-of-line
@@ -16,9 +21,9 @@ autoload zkbd
 source $HOME/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 [[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
 function zle-line-init zle-keymap-select {
-			RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-			RPS2=$RPS1
-			zle reset-prompt
+	RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+	RPS2=$RPS1
+	zle reset-prompt
 }
 autoload -U edit-command-line
 zle -N edit-command-line
