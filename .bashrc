@@ -17,6 +17,7 @@ fi
 
 # Put your fun stuff here.
 export EDITOR=vim
+export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist' -\""
 
 if [ -f $HOME/.config/private/bashrc ]
 then
