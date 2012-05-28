@@ -2,6 +2,7 @@ URxvt.perl-ext-common: url-select,urxvi
 URxvt.urlLauncher:     xdg-open
 URxvt.underlineURLs:   true
 URxvt.keysym.M-u:      perl:url-select:select_next
+URxvt.keysym.Shift-Escape:      perl:urxvi
 URxvt*buffered: true
 URxvt*cursorBlink: false
 URxvt*underlineColor: yellow
