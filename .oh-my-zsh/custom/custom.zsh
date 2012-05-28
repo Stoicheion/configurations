@@ -33,4 +33,5 @@ zle -N zle-keymap-select
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.5.3:/usr/games/bin:/$HOME/bin
 export EDITOR=vim
-export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist' -\""
+#export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist' -\""
+export PAGER=less
