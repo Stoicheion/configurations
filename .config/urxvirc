@@ -1,0 +1,289 @@
+# define map in terms of bind
+(def map(key input)
+  (bind key
+    (push_input input)))
+
+# repeat count:
+bind 0 (or
+         (push_repeat 0)
+         (posx 0))
+
+each (range 1 9) (lambda(n)
+                   (bind n (push_repeat n)))
+
+# cursor movement:
+
+# functions that apply the repeat count
+(def horz(cols)
+  (move 0 
+   (* 
+     (or repeat 1)
+     cols)))
+
+(def vert(rows)
+  (move 
+    (* 
+      (or repeat 1)
+      rows)))
+
+bind h (horz -1)
+bind j (vert 1)
+bind k (vert -1)
+bind l (horz 1)
+map <Up> k
+map <Down> j
+map <Left> h
+map <Right> l
+
+bind G (and
+         (posy
+           (if repeat
+             (+ repeat
+               (- first_row 1))
+             last_row))
+         (posx ^))
+
+bind <C-h> (and
+         (posy
+           (+ view_start 1))
+         (posx ^))
+
+bind <C-l> (and
+         (posy
+           (+
+             view_start
+             (- page_size 1)))
+         (posx ^))
+
+bind '^' (posx ^)
+bind '$' (posx $)
+
+bind '+' (and
+           (vert 1)
+           (posx ^))
+
+bind '-' (and
+           (vert -1)
+           (posx ^))
+
+map <Return> '+'
+
+bind <Home> (posy first_row)
+bind <End> (posy last_row)
+
+bind <C-b> (vert
+             (- 2 page_size))
+
+bind <C-f> (vert
+             (- page_size 2))
+
+map <PageUp> <C-b>
+map <PageDown> <C-f>
+
+bind K (vert
+             (/
+               (- 2 page_size)
+               2))
+
+bind J (vert
+             (/
+               (- page_size 2)
+               2))
+
+# find with repeat count
+(def fwr(find pattern)
+  (let ((loop (lambda(n)
+                (if (ne n 0)
+                  (apply find pattern
+                    (call loop (- n 1)))))))
+       (call loop (or repeat 1))))
+
+bind w (cursor_pos (fwr 'find_forward' '(?<!\w)\w'))    # Word character, not preceded by word character
+bind b (cursor_pos (fwr 'find_backward' '(?<!\w)\w'))
+bind W (cursor_pos (fwr 'find_forward' '(?<!\S)\S'))    # Non-space, not preceded by non-space
+bind B (cursor_pos (fwr 'find_backward' '(?<!\S)\S'))
+bind e (cursor_pos (fwr 'find_forward' '\w(?!\w)'))     # Word character, not followed by word character
+bind E (cursor_pos (fwr 'find_forward' '\S(?!\S)'))     # Non-space, not followed by a non-space
+
+# interactive find
+
+(def ic ()
+  (let ((prev ignore_case))
+       (defin global_context 'ignore_case' 1)
+       prev))
+(def noic () 
+  (let ((prev ignore_case))
+       (defin global_context 'ignore_case' 0)
+       prev))
+(def ws () 
+  (let ((prev wrap_search))
+       (defin global_context 'wrap_search' 1)
+       prev))
+(def nows () 
+  (let ((prev wrap_search))
+       (defin global_context 'wrap_search' 0)
+       prev))
+
+noic            # default to case-sensitive
+ws              # and wrap search
+
+(def find_wrap_forward (pattern)
+  (or
+    (find_forward pattern)
+    (find_forward pattern (list (first_row 0)))))
+
+(def find_wrap_backward (pattern)
+  (or
+    (find_backward pattern)
+    (find_backward pattern (list (last_row last_column)))))
+
+(def do_find (ptn dir)
+  (let ((pattern (if ignore_case
+                     (format '(?i)%s' ptn)
+                     ptn))
+        (wrap (if wrap_search 'wrap_' ''))
+        (found (fwr (format 'find_%s%s' wrap dir) pattern)))
+       (if found
+           (cursor_pos found)
+           (message (format 'pattern not found: %s' ptn)))
+       found))
+
+(def interactive_find (dir)
+  (lambda (text)
+    (let ((ptn (if (eq text '')
+                   last_find
+                   text)))
+      (defin global_context 'last_find' ptn)
+      (defin global_context 'last_dir' dir)
+      (do_find ptn dir))))
+
+bind '/' (ask '/' (interactive_find 'forward'))
+bind '?' (ask '?' (interactive_find 'backward'))
+bind 'n' (do_find last_find last_dir)
+
+# selection
+(def toggle_select(mode)
+  (select_mode
+    (if select_mode '' type)))                  # toggle the specified mode
+
+bind v (toggle_select 'char')
+bind V (toggle_select 'line')
+
+bind y (if select_mode
+           (select_mode '')                     # in select mode, just turn it off
+           (progn                               # otherwise,
+             (repeat repeat)                    # keep the repeat count for later
+             (let ((old_keypress                # save current keypress event
+               (on keypress                     # hook the next key
+                 (lambda(key)
+                   (on keypress old_keypress)   # restore previous event handler
+                   (if (eq key 0x79)            # y
+                     (progn
+                       (select                  # select lines
+                         cursor_row             # begin with the current line
+                         0                      # leftmost column
+                         (min
+                           last_row             # not beyond last row
+                           (+ 
+                             cursor_row         # use repeat count for number of rows
+                             (-
+                               (or repeat 1)
+                               1)))
+                         last_column)           # full width
+                       1)                       # key handled
+                     (progn                     # if not y,
+                       (on keypress             # on the next key
+                         (lambda(key)
+                           (select_mode '')     # turn off select mode
+                           (on keypress old_keypress)   # restore the old handler
+                           (push_key key)       # call it
+                           1))                  # key handled
+                       (select_mode 'char')     # turn on select mode
+                       0)))))))))               # do the key
+
+# mark and jump to mark
+
+bind m (let ((cpos cursor_pos)                  # grab cursor position
+             (old_keypress                      # save current keypress handler
+              (on keypress                      # grab the next key
+                (lambda(key)
+                  (on keypress old_keypress)    # restore previous handler
+                  (defin global_context
+                    (format "mark[%c]" key)     # mark name
+                    cpos)
+                  1)))))                        # key handled
+
+bind ' (let ((old_keypress
+              (on keypress
+                (lambda(key)
+                  (on keypress old_keypress)
+                  (let ((cpos (apply (format "mark[%c]" key))))
+                       (if cpos
+                           (cursor_pos cpos)
+                           (message (format "No such mark: %c" key))))
+                  1)))))
+# miscellaneous
+bind q quit
+
+def q quit                      # from command mode
+def x quit
+
+bind <Esc> (if select_mode
+             (select_mode '')   # escape select mode
+             (if selection
+               select           # or clear any selection
+               quit))           # or quit urxvi altogether
+
+# pipe to a command
+bind '|' (let ((txt (if selection selection text)))
+              (ask 'Pipe to: ' (lambda(where)
+                                 (pipe txt where))))
+
+# command mode
+
+bind ':' (ask ':' (getdef 'eval'))
+
+(def cmd_map(key input)
+  (cmd_bind key
+    (push_input input)))
+
+(def ask (prompt action default)
+  (cmd_prompt prompt)
+  (cmd_text default)
+  (cmd_pos (length default))            # end of default
+  (cmd_insert_mode 1)
+  (cmd_action action)
+  (cmd_mode 1))
+
+cmd_bind <Enter> (progn (call cmd_action cmd_text)
+                        (cmd_mode 0))
+cmd_bind <Left> (cmd_pos (- cmd_pos 1))
+cmd_bind <Right> (cmd_pos (+ cmd_pos 1))
+cmd_bind <BS> (if (eq cmd_pos 0)
+                  (if (eq (length cmd_text) 0)
+                      (cmd_mode 0))             # BS out of command mode
+                  (let ((old_pos cmd_pos))
+                    (cmd_pos (- cmd_pos 1))
+                    (cmd_text
+                      (if (gt cmd_pos 0)
+                        (format "%s%s"
+                          (substr cmd_text 0 cmd_pos)
+                          (substr cmd_text old_pos))
+                        (substr cmd_text old_pos)))))
+
+cmd_bind <Home> (cmd_pos 0)
+cmd_bind <End> (cmd_pos (length cmd_text))
+cmd_map  <C-b> <Home>
+cmd_map  <C-e> <End>
+cmd_bind <C-u> (progn
+                 (cmd_text (substr cmd_text cmd_pos))
+                 (cmd_pos 0))
+cmd_bind <Insert> (cmd_insert_mode (not (cmd_insert_mode)))
+cmd_bind <Del> (cmd_text
+                 (if (gt cmd_pos 0)
+                     (format "%s%s"
+                       (substr cmd_text 0 cmd_pos)
+                       (substr cmd_text (+ cmd_pos 1)))
+                     (substr cmd_text (+ cmd_pos 1))))
+cmd_bind <Esc> (cmd_mode 0)
+cmd_map  <C-c> <Esc>
