@@ -19,6 +19,7 @@ fi
 export EDITOR=vim
 #export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist' -\""
 export PAGER=less
+export GRAPHICAL_TERMINAL_EMULATOR=urxvtc
 
 if [ -f $HOME/.config/private/bashrc ]
 then

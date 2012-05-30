@@ -35,3 +35,4 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-b
 export EDITOR=vim
 #export PAGER="/bin/sh -c \"unset PAGER;col -b -x | view -c 'set ft=man nomod nolist' -\""
 export PAGER=less
+export GRAPHICAL_TERMINAL_EMULATOR=urxvtc
