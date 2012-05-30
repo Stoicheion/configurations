@@ -1,0 +1,3 @@
+# Write your default config options here!
+vo=gl_nosw,gl,gl2,sdl,x11,xv
+
