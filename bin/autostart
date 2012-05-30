@@ -2,4 +2,6 @@
 
 xrdb -load $HOME/.Xdefaults &
 xmodmap $HOME/.Xmodmap &
+urxvtd &
+$GRAPHICAL_TERMINAL_EMULATOR -e "mocp" &
 x-www-browser &
