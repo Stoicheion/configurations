@@ -42,7 +42,7 @@ check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_PROCESS_MANAGER\""; 	
 check_program conky; 				  												   export GRAPHICAL_SYSTEM_MONITOR=$program
 check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_PAGER\""; 										   export GRAPHICAL_PAGER=$program
 
-if [[ -n $DISPLAY ]]; then
+if [ -n $DISPLAY ]; then
 	export FILE_MANAGER=$GRAPHICAL_FILE_MANAGER
 	export WEB_BROWSER=$GRAPHICAL_WEB_BROWSWER
 	export EMAIL_READER=$GRAPHICAL_EMAIL_READER
