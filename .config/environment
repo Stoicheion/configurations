@@ -2,37 +2,45 @@
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.5.3:/usr/games/bin:/$HOME/bin
 
-export TERMINAL_FILE_MANAGER=vifm
-export TERMINAL_WEB_BROWSER=links
-export TERMINAL_EDITOR=vim
-export TERMINAL_EMAIL_READER=mutt
-export TERMINAL_FEED_READER=newsbeuter
-export TERMINAL_AUDIO_PLAYER=mocp
-export TERMINAL_VIDEO_PLAYER=mplayer
-export TERMINAL_IRC_CLIENT=weechat-curses
-export TERMINAL_CHAT_CLIENT=weechat-curses
-export TERMINAL_TORRENT_DOWNLOADER=rtorrent
-export TERMINAL_SPREADSHEET=sc
-export TERMINAL_PROCESS_MANAGER=htop
-export TERMINAL_SYSTEM_MONITOR=conky
-export TERMINAL_PAGER=less
+check_program () {
+    for program
+    do
+        command -v "$program" > /dev/null && return
+    done
+    app=
+}
 
-export GRAPHICAL_TERMINAL_EMULATOR=urxvtc
-export GRAPHICAL_FILE_MANAGER="$GRAPHICAL_TERMINAL_EMULATOR -e $TERMINAL_FILE_MANAGER"
-export GRAPHICAL_WEB_BROWSWER=firefox
-export GRAPHICAL_EDITOR="$GRAPHICAL_TERMINAL_EMULATOR -e $TERMINAL_EDITOR"
-export GRAPHICAL_EMAIL_READER="$GRAPHICAL_TERMINAL_EMULATOR -e $TERMINAL_EMAIL_READER"
-export GRAPHICAL_FEED_READER="$GRAPHICAL_TERMINAL_EMULATOR -e $TERMINAL_FEED_READER"
-export GRAPHICAL_AUDIO_PLAYER="$GRAPHICAL_TERMINAL_EMULATOR -e $TERMINAL_AUDIO_PLAYER"
-export GRAPHICAL_VIDEO_PLAYER=mplayer
-export GRAPHICAL_IRC_CLIENT="$GRAPHICAL_TERMINAL_EMULATOR -e $TERMINAL_IRC_CLIENT"
-export GRAPHICAL_CHAT_CLIENT="$GRAPHICAL_TERMINAL_EMULATOR -e $TERMINAL_CHAT_CLIENT"
-export GRAPHICAL_TORRENT_DOWNLOADER="GRAPHICAL_TERMINAL_EMULATOR -e $TERMINAL_TORRENT_DOWNLOADER"
-export GRAPHICAL_WORD_PROCESSOR=abiword
-export GRAPHICAL_SPREADSHEET=gnumeric
-export GRAPHICAL_PROCESS_MANAGER="$GRAPHICAL_TERMINAL_EMULATOR -e $TERMINAL_PROCESS_MANAGER"
-export GRAPHICAL_SYSTEM_MONITOR=conky
-export GRAPHICAL_PAGER="$GRAPHICAL_TERMINAL_EMULATOR -e $TERMINAL_PAGER"
+check_program vifm mc;																   export TERMINAL_FILE_MANAGER=$program
+check_program links w3m;															   export TERMINAL_WEB_BROWSER=$program
+check_program vim vi nano;															   export TERMINAL_EDITOR=$program
+check_program mutt;																   export TERMINAL_EMAIL_READER=$program
+check_program newsbeuter;															   export TERMINAL_FEED_READER=$program
+check_program mocp cmus mplayer;														   export TERMINAL_AUDIO_PLAYER=$program
+check_program mplayer;																   export TERMINAL_VIDEO_PLAYER=$program
+check_program weechat-curses irsii ii bitchx;													   export TERMINAL_IRC_CLIENT=$program
+check_program weechat-curses;															   export TERMINAL_CHAT_CLIENT=$program
+check_program rtorrent;																   export TERMINAL_TORRENT_DOWNLOADER=$program
+check_program sc;																   export TERMINAL_SPREADSHEET=$program
+check_program htop top;																   export TERMINAL_PROCESS_MANAGER=$program
+check_program conky;																   export TERMINAL_SYSTEM_MONITOR=$program
+check_program less more pg;															   export TERMINAL_PAGER=$program
+
+check_program urxvtc termite xterm terminator;     												   export GRAPHICAL_TERMINAL_EMULATOR=$program
+check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_FILE_MANAGER\""; 									   export GRAPHICAL_FILE_MANAGER=$program
+check_program firefox uzbl vimperator; 		   												   export GRAPHICAL_WEB_BROWSWER=$program
+check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_EDITOR\"" gvim; 									   export GRAPHICAL_EDITOR=$program
+check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_EMAIL_READER\"" thunderbird; 							   export GRAPHICAL_EMAIL_READER=$program
+check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_FEED_READER\"" liferea thunderbird; 							   export GRAPHICAL_FEED_READER=$program
+check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_AUDIO_PLAYER\""; 									   export GRAPHICAL_AUDIO_PLAYER=$program
+check_program mplayer vlc; 			  												   export GRAPHICAL_VIDEO_PLAYER=$program
+check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_IRC_CLIENT\"" xchat; 								   export GRAPHICAL_IRC_CLIENT=$program
+check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_CHAT_CLIENT\""; 									   export GRAPHICAL_CHAT_CLIENT=$program
+check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_TORRENT_DOWNLOADER\"" transmission; 							   export GRAPHICAL_TORRENT_DOWNLOADER=$program
+check_program abiword; 				  												   export GRAPHICAL_WORD_PROCESSOR=$program
+check_program gnumeric; 			  												   export GRAPHICAL_SPREADSHEET=$program
+check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_PROCESS_MANAGER\""; 									   export GRAPHICAL_PROCESS_MANAGER=$program
+check_program conky; 				  												   export GRAPHICAL_SYSTEM_MONITOR=$program
+check_program "$GRAPHICAL_TERMINAL_EMULATOR -e \"$TERMINAL_PAGER\""; 										   export GRAPHICAL_PAGER=$program
 
 if [[ -n $DISPLAY ]]; then
 	export FILE_MANAGER=$GRAPHICAL_FILE_MANAGER
