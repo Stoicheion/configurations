@@ -3,5 +3,9 @@
 xrdb -load $HOME/.Xdefaults &
 xmodmap $HOME/.Xmodmap &
 urxvtd &
-$GRAPHICAL_TERMINAL_EMULATOR -e "mocp" &
-x-www-browser &
+$WEB_BROWSER &
+$EMAIL_CLIENT &
+$FEED_READER &
+$AUDIO_PLAYER &
+$CHAT_CLIENT &
+$SYSTEM_MONITOR &
