@@ -5,7 +5,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-b
 check_program () {
     for program
     do
-        command -v "$program" > /dev/null && return 0
+        command -v "$program" > /dev/null && return
     done
     program=
 }
