@@ -6,7 +6,6 @@ if [[ -f $HOME/.config/private/zshrc ]];
 then
 	source $HOME/.config/private/zshrc
 fi
-source $HOME/.config/environment
 
 bindkey -v
 bindkey -M vicmd -rp '^['

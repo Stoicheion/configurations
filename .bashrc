@@ -21,6 +21,5 @@ if [ -f $HOME/.config/private/bashrc ]
 then
 	source $HOME/.config/private/bashrc
 fi
-source $HOME/.config/environment
 
 set -o vi
