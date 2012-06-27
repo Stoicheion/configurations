@@ -142,6 +142,21 @@
 	endfunction
 "}}}
 
+"{{{ Programming Automation
+function! Insert_Include_Guards()
+  let filename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+  let time = localtime()
+  let uuid = matchstr(system("uuidgen"), "[^\n\r]*")
+  execute "normal! ggO#ifndef " . filename . "_" . time  . "_" . uuid
+  execute "normal! o#define " . filename . "_" . time . "_" . uuid . " "
+  normal! o
+  execute "normal! Go#endif /* " . filename . "_" . time . "_" . uuid . " */"
+  normal! O
+  normal! ggjj
+endfunction
+autocmd BufNewFile *.{h,hpp} call Insert_Include_Guards()
+"}}}
+
 "{{{ Plugins
 	let g:ConqueTerm_TERM = 'vt100'
 	let g:snippets_dir = $HOME . "/.vim/snippets"
