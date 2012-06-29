@@ -146,7 +146,7 @@
 function! Insert_Include_Guards()
   let filename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
   let time = localtime()
-  let uuid = matchstr(system("uuidgen"), "[^\n\r]*")
+  let uuid = substitute(matchstr(system("uuidgen"), "[^\n\r]*"), "-", "_", "g")
   execute "normal! ggO#ifndef " . filename . "_" . time  . "_" . uuid
   execute "normal! o#define " . filename . "_" . time . "_" . uuid . " "
   normal! o
