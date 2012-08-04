@@ -60,6 +60,8 @@
 
 "{{{ Mappings
 	function Set_Custom_Map()
+		map <S-Enter> O<Esc>j
+		map <CR> o<Esc>k
 		map Y y$
 		nnoremap <silent> <C-U> :nohlsearch<CR><C-L>
 		nnoremap <silent> <Space> :call SetWindowMode()<CR>
