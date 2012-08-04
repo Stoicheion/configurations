@@ -163,4 +163,6 @@ autocmd BufNewFile *.{h,hpp} call Insert_Include_Guards()
 	"let g:solarized_termtrans = 1
 	"let g:solarized_termcolors=256
 	colorscheme solarized
+    	au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+    	au BufEnter *.org            call org#SetOrgFileType()
 "}}}
