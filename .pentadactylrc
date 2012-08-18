@@ -12,8 +12,8 @@ set editor='urxvt -e vim -n <file>'
 
 "{{{ Mappings
 	set hintkeys=asdfjkl;ghqwertyuiopzxcvbnm,./
-	noremap J <C-D>
-	noremap K <C-U>
+	nmap -builtin J <C-D>
+	nmap -builtin K <C-U>
 "}}}
 
 " vim: set ft=pentadactyl:
