@@ -1,7 +1,4 @@
-autoload -U compinit promptinit
-compinit
-promptinit; prompt gentoo
-
+source $HOME/.profile
 if [[ -f $HOME/.config/private/zshrc ]];
 then
 	source $HOME/.config/private/zshrc

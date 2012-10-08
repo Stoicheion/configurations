@@ -17,6 +17,8 @@ fi
 
 # Put your fun stuff here.
 
+source $HOME/.profile
+
 if [ -f $HOME/.config/private/bashrc ]
 then
 	source $HOME/.config/private/bashrc
