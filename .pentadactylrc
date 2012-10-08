@@ -8,7 +8,7 @@ open dactyl://help/intro
 set showtabline=multitab
 
 source! $HOME/.config/private/pentadactylrc
-command! -nargs=* sysadmin open gentoo-wiki <args> | archwiki <args> | funtoo-linux-wiki <args> | unofficial-gentoo-wiki <args>
+command! -nargs=* sysadmin open gentoo-wiki <args> | archwiki <args> | debian-wiki <args> | funtoo-linux-wiki <args> | unofficial-gentoo-wiki <args>
 
 set defsearch=startpage-ssl
 set editor='urxvt -e vim -n <file>'
