@@ -1,0 +1,4 @@
+map J j
+map K k
+map j <C-f>
+map k <C-b>
