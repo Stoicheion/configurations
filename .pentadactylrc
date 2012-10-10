@@ -2,6 +2,7 @@
 
 loadplugins '\.(js|penta)$'
 group user
+colorscheme solarized-dark
 extupdate!
 open dactyl://help/intro
 1pintab
