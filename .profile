@@ -12,3 +12,5 @@
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+eval `dircolors $HOME/.config/dir_colors`
