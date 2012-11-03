@@ -1,0 +1,28 @@
+"{{{ Display Settings
+     set showmode
+     set autoprint
+     set noflash
+     set number
+     set ruler
+     set showmatch
+"}}}
+
+"{{{ Indentation
+     set autoindent
+"}}}
+
+"{{{ Mappings
+     set cedit=
+     set filec=\	
+     map gg 1G
+     map H 0
+     map J z.
+     map K z.
+     map L $
+     map  ok
+"}}}
+
+"{{{ Searching
+     set iclower
+     set searchincr
+"}}}
