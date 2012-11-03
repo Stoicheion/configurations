@@ -56,8 +56,8 @@
 	set showmode
 	set showcmd
 	set fdm=indent
-	set listchars=eol:$,tab:¶\ ,trail:·,extends:+,precedes:-,conceal:↑,nbsp:_
-	set showbreak=»\ 
+	set listchars=eol:↵,tab:¶\ ,trail:·,extends:+,precedes:-,conceal:↑,nbsp:_
+	set showbreak=↪\ 
 "}}}
 
 "{{{ Mappings
