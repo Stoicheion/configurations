@@ -20,6 +20,7 @@
      map K z.
      map L $
      map  ok
+     map ZQ :q!
 "}}}
 
 "{{{ Searching
