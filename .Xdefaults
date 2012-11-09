@@ -1,8 +1,6 @@
 URxvt.perl-ext-common: url-select,urxvi
 URxvt.urlLauncher:     xdg-open
 URxvt.underlineURLs:   true
-URxvt.keysym.M-u:      perl:url-select:select_next
-URxvt.keysym.Shift-Escape:      perl:urxvi
 URxvt*buffered: true
 URxvt*cursorBlink: false
 URxvt*underlineColor: yellow
@@ -14,6 +12,11 @@ URxvt*loginShell: true
 Urxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 5000
 URxvt.matcher.button: 1
+!!{{{ Keybindings
+	URxvt.keysym.M-u:      perl:url-select:select_next
+	URxvt.keysym.Shift-Escape:      perl:urxvi
+	URxvt.keysym.Shift-Return: \033[1;1~
+!!}}}
 
 xterm*font: xft:inconsolata:size=10:antialias=true
 

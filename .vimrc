@@ -62,7 +62,8 @@
 
 "{{{ Mappings
 	function Set_Custom_Map()
-		map <S-Enter> O<Esc>j
+		map <S-Enter> O<Esc>j "Only works in gvim.
+		map [1;1~ O<Esc>j "Same mapping for terminal vim (while in urxvt with my custom settings).
 		map <CR> o<Esc>k
 		map Y y$
 		nnoremap <silent> <C-U> :nohlsearch<CR><C-L>
