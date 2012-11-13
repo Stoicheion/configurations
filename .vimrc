@@ -1,4 +1,5 @@
 "{{{ Miscellaneous
+	set mouse=""
 	filetype plugin indent on
 	set confirm
 	set loadplugins
@@ -43,6 +44,8 @@
 "{{{ Display settings
 	set shortmess+=I
 	set title
+	set guioptions=aegitc
+	set guicursor+=a:blinkon0
 	set background=dark
 	syntax enable
 	set laststatus=2
