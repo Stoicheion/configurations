@@ -1,23 +1,24 @@
-URxvt.perl-ext-common: url-select,urxvi
-URxvt.urlLauncher:     xdg-open
-URxvt.underlineURLs:   true
-URxvt*buffered: true
-URxvt*cursorBlink: false
-URxvt*underlineColor: yellow
-URxvt*font: xft:inconsolata:size=10:antialias=true
-URxvt*depth: 32
-URxvt*borderless: 1
-URxvt*scrollBar: false
-URxvt*loginShell: true
-Urxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
-URxvt*saveLines: 5000
-URxvt.matcher.button: 1
-!!{{{ Keybindings
+!!{{{ Input Settings and Keybindings
+	Urxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
 	URxvt.keysym.M-u:      perl:url-select:select_next
 	URxvt.keysym.Control-Shift-Escape:      perl:urxvi
 	URxvt.keysym.Shift-Escape: \033[25~
 	URxvt.keysym.Shift-Return: \033[1;1~
 !!}}}
+URxvt*loginShell: true
+URxvt.perl-ext-common: url-select,urxvi
+URxvt.urlLauncher:     xdg-open
+URxvt*buffered: true
+URxvt*saveLines: 5000
+URxvt.underlineURLs:   true
+URxvt*cursorBlink: false
+URxvt*underlineColor: yellow
+URxvt*font: xft:Inconsolata-LGC:size=10:antialias=true
+URxvt*italicFont: xft:Inconsolata-LGC-Italic:size=10:antialias=true
+URxvt*depth: 32
+URxvt*borderless: 1
+URxvt*scrollBar: false
+URxvt.matcher.button: 1
 
 xterm*font: xft:inconsolata:size=10:antialias=true
 
