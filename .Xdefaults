@@ -14,7 +14,8 @@ URxvt*saveLines: 5000
 URxvt.matcher.button: 1
 !!{{{ Keybindings
 	URxvt.keysym.M-u:      perl:url-select:select_next
-	URxvt.keysym.Shift-Escape:      perl:urxvi
+	URxvt.keysym.Control-Shift-Escape:      perl:urxvi
+	URxvt.keysym.Shift-Escape: \033[25~
 	URxvt.keysym.Shift-Return: \033[1;1~
 !!}}}
 
