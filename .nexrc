@@ -15,7 +15,7 @@
      set cedit=
      set filec=\	
      map gg 1G
-     map H 0
+     map H ^
      map J z.
      map K z.
      map L $

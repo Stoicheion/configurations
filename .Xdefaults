@@ -4,7 +4,7 @@
 	Urxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
 	URxvt*keysym.M-u:      perl:url-select:select_next
 	URxvt*keysym.Control-Shift-Escape:      perl:urxvi
-	URxvt*keysym.Shift-Escape: \033[25~
+	URxvt*keysym.Shift-Escape: \033[25$
 	URxvt*keysym.Shift-Return: \033[26$
 	Urxvt*keysym.Control-Return: \033[26^
 	URxvt*keysym.Control-Shift-Return: \033[26@

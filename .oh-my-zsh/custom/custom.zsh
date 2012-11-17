@@ -6,7 +6,7 @@ fi
 
 bindkey -v
 bindkey -M vicmd -rp '^['
-bindkey -M vicmd 'H' vi-beginning-of-line
+bindkey -M vicmd 'H' vi-first-non-blank
 bindkey -M vicmd 'L' vi-end-of-line
 bindkey -M vicmd '^[' undefined-key
 bindkey -M viins -rp '^['

@@ -11,6 +11,6 @@ $if mode=vi
     set keymap vi-command
     "gg": beginning-of-history
     "G": end-of-history
-    "H": beginning-of-line
+    "H": vi-first-print
     "L": end-of-line
 $endif
