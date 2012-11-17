@@ -3,7 +3,7 @@
 	URxvt.keysym.M-u:      perl:url-select:select_next
 	URxvt.keysym.Control-Shift-Escape:      perl:urxvi
 	URxvt.keysym.Shift-Escape: \033[25~
-	URxvt.keysym.Shift-Return: \033[1;1~
+	URxvt.keysym.Shift-Return: \033[26~
 !!}}}
 URxvt*loginShell: true
 URxvt.perl-ext-common: url-select,urxvi

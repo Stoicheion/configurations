@@ -65,10 +65,15 @@
 
 "{{{ Mappings
 	function Set_Custom_Map()
-		map <S-Enter> O<Esc>j "Only works in gvim.
-		map [1;1~ O<Esc>j "Same mapping for terminal vim (while in urxvt with my custom settings).
-		map <CR> o<Esc>k
-		map Y y$
+		if has("gui_running")
+			"Only works in gvim:
+			nnoremap <S-Enter> O<Esc>j
+		else
+			"Only works with appropriate keys (Shift+Enter) when in a customized terminal.
+			nnoremap [26~ O<Esc>j
+		endif
+		nnoremap <CR> o<Esc>k
+		noremap Y y$
 		nnoremap <silent> <C-U> :nohlsearch<CR><C-L>
 		nnoremap <silent> <Space> :call SetWindowMode()<CR>
 		autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<CR>
@@ -86,7 +91,17 @@
 		noremap gK K
 		"K no longer opens a manpage for the word under the cursor.
 	endfunction
+	function Set_Cmd_Win_Map()
+		if has("gui_running")
+			nunmap <S-Enter>
+		else
+			nunmap [26~
+		endif
+		nunmap <CR>
+	endfunction
 	autocmd VimEnter * call Set_Custom_Map()
+	autocmd CmdwinEnter * call Set_Cmd_Win_Map()
+	autocmd CmdwinLeave * call Set_Custom_Map()
 "}}}
 
 "{{{ Window Management
