@@ -64,13 +64,25 @@
 "}}}
 
 "{{{ Mappings
+	function Execute_RHS_of_Cursor()
+		normal! "zy$
+		normal! @z
+	endfunction
+	function Execute_Current_Line()
+		normal! ^"zy$
+		normal! @z
+	endfunction
 	function Set_Custom_Map()
 		if has("gui_running")
 			"Only works in gvim:
 			nnoremap <S-Enter> O<Esc>j
+			nnoremap <silent> <C-Enter> :call Execute_RHS_of_Cursor()<CR>
+			nnoremap <silent> <C-S-Enter> :call Execute_Current_Line()<CR>
 		else
-			"Only works with appropriate keys (Shift+Enter) when in a customized terminal.
-			nnoremap [26~ O<Esc>j
+			"Only works with appropriate keys (Shift+Enter/Ctrl+Enter/Ctrl+Shift+Enter) when in a customized terminal.
+			nnoremap [26$ O<Esc>j
+			nnoremap <silent> [26^ :call Execute_RHS_of_Cursor()<CR>
+			nnoremap <silent> [26@ :call Execute_Current_Line()<CR>
 		endif
 		nnoremap <CR> o<Esc>k
 		noremap Y y$
@@ -79,10 +91,10 @@
 		autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<CR>
 		nnoremap <silent> <leader> :call PerfectFormat()<CR>
 		"{{{ Movement
-			noremap H 0
+			noremap H ^
 			noremap J <C-D>z.
 			noremap K <C-U>z.
-			noremap L $
+			noremap L g_
 			noremap <C-H> H
 			noremap <C-L> L
 		"}}}
@@ -95,7 +107,7 @@
 		if has("gui_running")
 			nunmap <S-Enter>
 		else
-			nunmap [26~
+			nunmap [26$
 		endif
 		nunmap <CR>
 	endfunction
@@ -108,13 +120,13 @@
 	let g:WinModeSet = 0
 	"autocmd VimResized * call WindowModeStatus()
 
-	function WinMove(key) 
+	function WinMove(key)
 	  let t:curwin = winnr()
 	  exec "wincmd ".a:key
 	  if (t:curwin == winnr()) "we havent moved
 	    if (match(a:key,'[jk]')) "were we going up/down
 	      wincmd v
-	    else 
+	    else
 	      wincmd s
 	    endif
 	    exec "wincmd ".a:key
