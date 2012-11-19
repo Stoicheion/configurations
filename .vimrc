@@ -21,15 +21,9 @@
 	set autoindent
 	set smartindent
 	set cindent
-	let b:FiletypeForFormatting = 0
-	autocmd BufNewFile,BufRead *.cpp let b:FiletypeForFormatting = 'C'
-	autocmd BufNewFile,BufRead *.hpp let b:FiletypeForFormatting = 'C'
-	autocmd BufNewFile,BufRead *.cc let b:FiletypeForFormatting = 'C'
-	autocmd BufNewFile,BufRead *.h let b:FiletypeForFormatting = 'C'
-	autocmd BufNewFile,BufRead *.c let b:FiletypeForFormatting = 'C'
 
 	function PerfectFormat()
-		if (b:FiletypeForFormatting == 'C')
+		if ((&filetype == "cpp") || (&filetype == "c"))
 			set formatprg=indent\ -npsl\ -npcs
 			normal gggqG
 			set formatprg=uncrustify\ -c\ ~/.config/uncrustify/cpp.cfg\ -l\ CPP\ --no-backup\ 2>/dev/null
@@ -177,19 +171,34 @@
 	endfunction
 "}}}
 
-"{{{ Programming Automation
+"{{{ Settings for Specific Filetypes
 function! Insert_Include_Guards()
-  let filename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-  let time = localtime()
-  let uuid = substitute(matchstr(system("uuidgen"), "[^\n\r]*"), "-", "_", "g")
-  execute "normal! ggO#ifndef " . filename . "_" . time  . "_" . uuid
-  execute "normal! o#define " . filename . "_" . time . "_" . uuid . " "
-  normal! o
-  execute "normal! Go#endif /* " . filename . "_" . time . "_" . uuid . " */"
-  normal! O
-  normal! ggjj
+	let filename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+	let time = localtime()
+	let uuid = substitute(matchstr(system("uuidgen"), "[^\n\r]*"), "-", "_", "g")
+	execute "normal! ggO#ifndef " . filename . "_" . time  . "_" . uuid
+	execute "normal! o#define " . filename . "_" . time . "_" . uuid . " "
+	normal! o
+	execute "normal! Go#endif /* " . filename . "_" . time . "_" . uuid . " */"
+	normal! O
+	normal! ggjj
 endfunction
-autocmd BufNewFile *.{h,hpp} call Insert_Include_Guards()
+function Initialize_New_File()
+	if (&filetype == "c_header")
+		if (! &readonly)
+			call Insert_Include_Guards()
+		endif
+		set filetype=c
+	elseif (&filetype == "cpp_header")
+		if (! &readonly)
+			call Insert_Include_Guards()
+		endif
+		set filetype=cpp
+	endif
+endfunction
+autocmd BufNewFile *.h set filetype=c_header
+autocmd BufNewFile *.hpp set filetype=cpp_header
+autocmd BufNewFile * call Initialize_New_File()
 "}}}
 
 "{{{ Plugins
