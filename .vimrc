@@ -58,6 +58,12 @@
 "}}}
 
 "{{{ Mappings
+	let s:noremaps = ["H ^","J <C-D>z.","K <C-U>z.","L g_","<C-H> H","<C-L> L","Y y$","<C-J> J","gK K"]
+	let s:nnoremaps = ["<CR> o<Esc>k","<silent> <C-U> :nohlsearch<CR><C-L>","<silent> <Space> :call SetWindowMode()<CR>","<silent> <leader> :call PerfectFormat()<CR>"]
+	"Only works in gvim:
+	let s:gui_nnoremaps = ["<S-Enter> O<Esc>j","<silent> <C-Enter> :call Execute_RHS_of_Cursor()<CR>","<silent> <C-S-Enter> :call Execute_Current_Line()<CR>"]
+	"Only works with appropriate keys (Shift+Enter/Ctrl+Enter/Ctrl+Shift+Enter) when in a customized terminal.
+	let s:term_nnoremaps = ["[26$ O<Esc>j","<silent> [26^ :call Execute_RHS_of_Cursor()<CR>","<silent> [26@ :call Execute_Current_Line()<CR>"]
 	function Execute_RHS_of_Cursor()
 		normal! "zy$
 		normal! @z
@@ -66,36 +72,23 @@
 		normal! ^"zy$
 		normal! @z
 	endfunction
-	function Set_Custom_Map()
+	function Set_Default_Map()
+		for binding in s:noremaps
+			execute "noremap " . binding
+		endfor
+		for binding in s:nnoremaps
+			execute "nnoremap " . binding
+		endfor
 		if has("gui_running")
-			"Only works in gvim:
-			nnoremap <S-Enter> O<Esc>j
-			nnoremap <silent> <C-Enter> :call Execute_RHS_of_Cursor()<CR>
-			nnoremap <silent> <C-S-Enter> :call Execute_Current_Line()<CR>
+			for binding in s:gui_nnoremaps
+				execute "nnoremap " . binding
+			endfor
 		else
-			"Only works with appropriate keys (Shift+Enter/Ctrl+Enter/Ctrl+Shift+Enter) when in a customized terminal.
-			nnoremap [26$ O<Esc>j
-			nnoremap <silent> [26^ :call Execute_RHS_of_Cursor()<CR>
-			nnoremap <silent> [26@ :call Execute_Current_Line()<CR>
+			for binding in s:term_nnoremaps
+				execute "nnoremap " . binding
+			endfor
 		endif
-		nnoremap <CR> o<Esc>k
-		noremap Y y$
-		nnoremap <silent> <C-U> :nohlsearch<CR><C-L>
-		nnoremap <silent> <Space> :call SetWindowMode()<CR>
 		autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<CR>
-		nnoremap <silent> <leader> :call PerfectFormat()<CR>
-		"{{{ Movement
-			noremap H ^
-			noremap J <C-D>z.
-			noremap K <C-U>z.
-			noremap L g_
-			noremap <C-H> H
-			noremap <C-L> L
-		"}}}
-		noremap <C-J> J
-		"J no longer joins lines together.
-		noremap gK K
-		"K no longer opens a manpage for the word under the cursor.
 	endfunction
 	function Set_Cmd_Win_Map()
 		if has("gui_running")
@@ -105,9 +98,9 @@
 		endif
 		nunmap <CR>
 	endfunction
-	autocmd VimEnter * call Set_Custom_Map()
+	autocmd VimEnter * call Set_Default_Map()
 	autocmd CmdwinEnter * call Set_Cmd_Win_Map()
-	autocmd CmdwinLeave * call Set_Custom_Map()
+	autocmd CmdwinLeave * call Set_Default_Map()
 "}}}
 
 "{{{ Window Management
@@ -167,7 +160,7 @@
 		endif
 		let g:WinModeSet = 0
 		call WindowModeStatus()
-		call Set_Custom_Map()
+		call Set_Default_Map()
 	endfunction
 "}}}
 
