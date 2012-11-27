@@ -1,13 +1,47 @@
-!!{{{ Input Settings and Keybindings
+!!{{{	Input Settings and Key Bindings
 	URxvt*iso14755: false
 	URxvt*iso14755_52: false
-	Urxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
+	URxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
 	URxvt*keysym.M-u:      perl:url-select:select_next
 	URxvt*keysym.Control-Shift-Escape:      perl:urxvi
 	URxvt*keysym.Shift-Escape: \033[25$
 	URxvt*keysym.Shift-Return: \033[26$
-	Urxvt*keysym.Control-Return: \033[26^
+	URxvt*keysym.Control-Return: \033[26^
 	URxvt*keysym.Control-Shift-Return: \033[26@
+!!	{{{	Key Bindings for Testing Purposes
+!!		URxvt*keysym.F1: \033[25~
+!!		URxvt*keysym.Shift-F1: \033[25$
+!!		URxvt*keysym.Control-F1: \033[25^
+!!		URxvt*keysym.Control-Shift-F1: \033[25@
+!!		URxvt*keysym.F2: \033[26~
+!!		URxvt*keysym.Shift-F2: \033[26$
+!!		URxvt*keysym.Control-F2: \033[26^
+!!		URxvt*keysym.Control-Shift-F2: \033[26@
+!!		URxvt*keysym.F3: \033[28~
+!!		URxvt*keysym.Shift-F3: \033[28$
+!!		URxvt*keysym.Control-F3: \033[28^
+!!		URxvt*keysym.Control-Shift-F3: \033[28@
+!!		URxvt*keysym.F4: \033[29~
+!!		URxvt*keysym.Shift-F4: \033[29$
+!!		URxvt*keysym.Control-F4: \033[29^
+!!		URxvt*keysym.Control-Shift-F4: \033[29@
+!!		URxvt*keysym.F5: \033[31~
+!!		URxvt*keysym.Shift-F5: \033[31$
+!!		URxvt*keysym.Control-F5: \033[31^
+!!		URxvt*keysym.Control-Shift-F5: \033[31@
+!!		URxvt*keysym.F6: \033[32~
+!!		URxvt*keysym.Shift-F6: \033[32$
+!!		URxvt*keysym.Control-F6: \033[32^
+!!		URxvt*keysym.Control-Shift-F6: \033[32@
+!!		URxvt*keysym.F7: \033[33~
+!!		URxvt*keysym.Shift-F7: \033[33$
+!!		URxvt*keysym.Control-F7: \033[33^
+!!		URxvt*keysym.Control-Shift-F7: \033[33@
+!!		URxvt*keysym.F8: \033[34~
+!!		URxvt*keysym.Shift-F8: \033[34$
+!!		URxvt*keysym.Control-F8: \033[34^
+!!		URxvt*keysym.Control-Shift-F8: \033[34@
+!!	}}}
 !!}}}
 URxvt*loginShell: true
 URxvt*perl-ext-common: url-select,urxvi
