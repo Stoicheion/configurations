@@ -2,22 +2,28 @@
 
 loadplugins '\.(js|penta)$'
 group user
-colorscheme solarized-dark
-extupdate!
-open dactyl://help/intro
-1pintab
-set showtabline=multitab
 
-source! $HOME/.config/private/pentadactylrc
-command! -nargs=* sysadmin open gentoo-wiki <args> | archwiki <args> | debian-wiki <args> | funtoo-linux-wiki <args> | unofficial-gentoo-wiki <args>
-
+set findflags=rL
 set defsearch=startpage-ssl
 set editor='urxvt -e vim -n <file>'
 
-"{{{ Mappings
+"{{{ Appearance
+	colorscheme solarized-dark
+	set showtabline=multitab
+	1pintab
+	open dactyl://help/intro
+"}}}
+
+"{{{ Input Settings and Key Bindings
 	set hintkeys=asdfjkl;ghqwertyuiopzxcvbnm,./
 	nmap -builtin J <C-D>
 	nmap -builtin K <C-U>
+	nmap -builtin <C-/> /\C
 "}}}
+
+extupdate!
+
+source! $HOME/.config/private/pentadactylrc
+command! -nargs=* sysadmin open gentoo-wiki <args> | archwiki <args> | debian-wiki <args> | funtoo-linux-wiki <args> | unofficial-gentoo-wiki <args>
 
 " vim: set ft=pentadactyl:
