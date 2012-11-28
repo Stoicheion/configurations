@@ -57,7 +57,8 @@
 	set showbreak=↪\ 
 "}}}
 
-"{{{ Mappings
+"{{{ Input Settings and Key Bindings
+	set timeoutlen=0
 	let s:noremaps = ["H ^","J <C-D>z.","K <C-U>z.","L g_","<C-H> H","<C-L> L","Y y$","<C-J> J","gK K","/ /\\v"]
 	let s:nnoremaps = ["<CR> o<Esc>k","<silent> <C-U> :nohlsearch<CR><C-L>","<silent> <Space> :call SetWindowMode()<CR>","<silent> <leader> :call PerfectFormat()<CR>"]
 	"Only works in gvim:
@@ -79,7 +80,6 @@
 		for binding in s:nnoremaps
 			execute "nnoremap " . binding
 		endfor
-		cnoremap s/ s/\v
 		if has("gui_running")
 			for binding in s:gui_nnoremaps
 				execute "nnoremap " . binding
@@ -90,7 +90,6 @@
 			endfor
 			"Case sensitive search
 			map  /\C
-			cmap s s/\C
 		endif
 		autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<CR>
 	endfunction
