@@ -58,7 +58,7 @@
 "}}}
 
 "{{{ Mappings
-	let s:noremaps = ["H ^","J <C-D>z.","K <C-U>z.","L g_","<C-H> H","<C-L> L","Y y$","<C-J> J","gK K"]
+	let s:noremaps = ["H ^","J <C-D>z.","K <C-U>z.","L g_","<C-H> H","<C-L> L","Y y$","<C-J> J","gK K","/ /\\v"]
 	let s:nnoremaps = ["<CR> o<Esc>k","<silent> <C-U> :nohlsearch<CR><C-L>","<silent> <Space> :call SetWindowMode()<CR>","<silent> <leader> :call PerfectFormat()<CR>"]
 	"Only works in gvim:
 	let s:gui_nnoremaps = ["<S-Enter> O<Esc>j","<silent> <C-Enter> :call Execute_RHS_of_Cursor()<CR>","<silent> <C-S-Enter> :call Execute_Current_Line()<CR>"]
@@ -79,6 +79,7 @@
 		for binding in s:nnoremaps
 			execute "nnoremap " . binding
 		endfor
+		cnoremap s/ s/\v
 		if has("gui_running")
 			for binding in s:gui_nnoremaps
 				execute "nnoremap " . binding
