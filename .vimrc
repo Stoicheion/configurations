@@ -88,6 +88,9 @@
 			for binding in s:term_nnoremaps
 				execute "nnoremap " . binding
 			endfor
+			"Case sensitive search
+			map  /\C
+			cmap s s/\C
 		endif
 		autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<CR>
 	endfunction
