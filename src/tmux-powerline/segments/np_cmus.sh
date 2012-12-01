@@ -11,6 +11,7 @@ if [ -n "$cmus_pid" ]; then
 
     if [ "$status" == "playing" ]; then
         echo "♫ ⮀  ${np}"
-	else echo "♫ || ${np}"
+    elif [ "$status" == "stopped" ]; then
+	echo "♫ || ${np}"
     fi
 fi
