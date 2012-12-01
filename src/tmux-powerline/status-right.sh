@@ -90,7 +90,7 @@ weather+=(["script"]="${segments_path}/weather_yahoo.sh")
 weather+=(["foreground"]="colour255")
 weather+=(["background"]="colour37")
 weather+=(["separator"]="${separator_left_bold}")
-#register_segment "weather"
+register_segment "weather"
 
 declare -A xkb_layout
 if [ "$PLATFORM" == "linux" ]; then

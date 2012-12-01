@@ -5,13 +5,13 @@
 # 1. Go to Yahoo weather http://weather.yahoo.com/
 # 2. Find the weather for you location
 # 3. Copy the last numbers in that URL. e.g. "http://weather.yahoo.com/united-states/california/newport-beach-12796587/" has the number "12796587"
-location="12796587"
+location="2508913"
 
 # Can be any of {c,f,k}.
 unit="f"
 
 # The update period in seconds.
-update_period=600
+update_period=6000
 
 # Cache file.
 tmp_file="${tp_tmpdir}/weather_yahoo.txt"
@@ -109,8 +109,8 @@ if [ -z "$degree" ]; then
 # <yweather:condition  text="Clear"  code="31"  temp="66"  date="Mon, 01 Oct 2012 8:00 pm CST" />
     degree=$(echo "$condition" | sed 's/.*temp="\([^"]*\)".*/\1/')
     condition=$(echo "$condition" | sed 's/.*text="\([^"]*\)".*/\1/')
-        echo "$degree" > $tmp_file
-        echo "$condition" >> $tmp_file
+        #echo "$degree" > $tmp_file
+        #echo "$condition" >> $tmp_file
     elif [ -f "$tmp_file" ]; then
         read_tmp_file
     fi
