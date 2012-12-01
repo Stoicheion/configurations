@@ -43,6 +43,7 @@
 !!		URxvt*keysym.Control-Shift-F8: \033[34@
 !!	}}}
 !!}}}
+
 URxvt*loginShell: true
 URxvt*perl-ext-common: url-select,urxvi
 URxvt*urlLauncher:     xdg-open
@@ -51,15 +52,24 @@ URxvt*saveLines: 5000
 URxvt*underlineURLs:   true
 URxvt*cursorBlink: false
 URxvt*underlineColor: yellow
-URxvt*font: xft:Inconsolata-LGC:size=10:antialias=true
-URxvt*italicFont: xft:Inconsolata-LGC-Italic:size=10:antialias=true
+!!URxvt*font:		xft:Inconsolata-LGC:size=10:antialias=true
+!!URxvt*italicFont:	xft:Inconsolata-LGC-Italic:size=10:antialias=true
+!URxvt*font:		xft:Monaco for Powerline:regular:size=8:antialias=true
+!URxvt*imFont:		xft:Monaco for Powerline:regular:size=8:size=10:antialias=true
+!URxvt*boldFont:	xft:Monaco for Powerline:bold:size=8:size=10:antialias=true
+!URxvt*italicFont:	xft:Monaco for Powerline:italic:size=8:size=10:antialias=true
+!URxvt*boldItalicFont:	xft:Monaco for Powerline:bold:italic:size=8:size=10:antialias=true
+URxvt*font:		xft:Consolas for Powerline:regular:size=10:antialias=true
+URxvt*boldFont:		xft:Consolas for Powerline:BoldForPowerline:size=10:antialias=true
+URxvt*italicFont:	xft:Consolas for Powerline:ItalicForPowerline:size=10:antialias=true
+URxvt*boldItalicFont:	xft:Consolas for Powerline:Bold Italic:size=10:antialias=true
+
 URxvt*depth: 32
 URxvt*borderless: true
 URxvt*scrollBar: false
 URxvt*matcher.button: 1
 
-xterm*font: xft:inconsolata:size=10:antialias=true
-
+xterm*font:		xft:inconsolata:size=10:antialias=true
 
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
