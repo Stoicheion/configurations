@@ -10,6 +10,7 @@ set editor='urxvt -e vim -n <file>'
 "{{{ Appearance
 	colorscheme solarized-dark
 	set showmode=base,operator
+	set guioptions+=c
 	set showtabline=multitab
 	1pintab
 	open dactyl://help/intro
@@ -22,7 +23,7 @@ set editor='urxvt -e vim -n <file>'
 	nmap -builtin <C-/> /\C
 "}}}
 
-extupdate!
+"extupdate!
 
 source! $HOME/.config/private/pentadactylrc
 command! -nargs=* sysadmin open gentoo-wiki <args> | archwiki <args> | debian-wiki <args> | funtoo-linux-wiki <args> | unofficial-gentoo-wiki <args>
