@@ -48,7 +48,7 @@ URxvt*loginShell: true
 URxvt*perl-ext-common: url-select,urxvi
 URxvt*urlLauncher:     xdg-open
 URxvt*buffered: true
-URxvt*saveLines: 5000
+URxvt*saveLines: 4096
 URxvt*underlineURLs:   true
 URxvt*cursorBlink: false
 URxvt*underlineColor: yellow
