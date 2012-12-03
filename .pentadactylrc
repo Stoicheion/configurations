@@ -9,6 +9,7 @@ set editor='urxvt -e vim -n <file>'
 
 "{{{ Appearance
 	colorscheme solarized-dark
+	set showmode=base,operator
 	set showtabline=multitab
 	1pintab
 	open dactyl://help/intro
