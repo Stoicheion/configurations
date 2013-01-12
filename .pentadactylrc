@@ -20,6 +20,10 @@ set editor='urxvt -e vim -n <file>'
 	set hintkeys=asdfjkl;ghqwertyuiopzxcvbnm,./
 	nmap -builtin J <C-D>
 	nmap -builtin K <C-U>
+	nmap -builtin <C-h> 0
+	nmap -builtin <C-j> <C-f>
+	nmap -builtin <C-k> <C-b>
+	nmap -builtin <C-l> $
 	nmap -builtin <C-/> /\C
 "}}}
 
