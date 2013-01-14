@@ -1,6 +1,5 @@
 #!/bin/sh
 
-xrdb -load $HOME/.Xdefaults &
 xmodmap $HOME/.config/Xmodmap &
 urxvtd &
 $WEB_BROWSER &
