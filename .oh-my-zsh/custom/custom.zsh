@@ -3,6 +3,7 @@ if [[ -f $HOME/.config/private/zshrc ]];
 then
 	source $HOME/.config/private/zshrc
 fi
+setopt no_hup
 
 bindkey -v
 bindkey -M vicmd -rp '^['
