@@ -314,6 +314,8 @@ awful.rules.rules = {
                      focus = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
+    { rule_any = { class = { "URxvt", "xterm", "Gvim", "Gview", "Emacs" } },
+      properties = { size_hints_honor = false } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
