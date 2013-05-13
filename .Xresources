@@ -3,6 +3,7 @@
 	URxvt*iso14755_52: false
 	URxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
 	URxvt*keysym.M-u:      perl:url-select:select_next
+	URxvt*kuake.key: Alt+Return
 	URxvt*keysym.Control-Shift-Escape:      perl:urxvi
 	URxvt*keysym.Shift-Escape: \033[25$
 	URxvt*keysym.Shift-Return: \033[26$
@@ -82,6 +83,18 @@ yeahconsole.keyFull: Alt+m
 
 TransparentURxvt.depth: 32
 TransparentURxvt.background: rgba:1111/1111/1111/dddd
+
+
+KuakeURxvt.perl-ext-common: default,matcher,kuake<F12>
+KuakeURxvt.geometry: 212x60+0+0
+KuakeURxvt.borderLess: true
+KuakeURxvt.internalBorder: 0
+KuakeURxvt.externalBorder: 0
+KuakeURxvt.toggleFocusesIfVisible: true
+
+KuakeURxvt.depth: 32
+KuakeURxvt.background: rgba:1111/1111/1111/dddd
+
 
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
