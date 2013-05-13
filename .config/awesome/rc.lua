@@ -316,6 +316,8 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule_any = { class = { "URxvt", "xterm", "Gvim", "Gview", "Emacs" } },
       properties = { size_hints_honor = false } },
+    { rule = { class = "Tilda" },
+      properties = { floating = true } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
