@@ -71,6 +71,13 @@ URxvt*matcher.button: 1
 
 xterm*font:		xft:inconsolata:size=10:antialias=true
 
+
+yeahconsole.term: urxvtc
+yeahconsole.toggleKey: Alt+Return
+yeahconsole.keyBigger: Alt+j
+yeahconsole.keySmaller: Alt+k
+yeahconsole.keyFull: Alt+m
+
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX 16/8 TERMCOL XTERM/HEX L*A*B RGB HSB
