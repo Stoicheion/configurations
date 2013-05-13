@@ -1,5 +1,6 @@
 #!/bin/sh
 
+xcompmgr &
 xmodmap $HOME/.config/Xmodmap &
 urxvtd &
 $WEB_BROWSER &

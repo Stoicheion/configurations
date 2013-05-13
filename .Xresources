@@ -69,6 +69,7 @@ URxvt*borderless: true
 URxvt*scrollBar: false
 URxvt*matcher.button: 1
 
+
 xterm*font:		xft:inconsolata:size=10:antialias=true
 
 
@@ -77,6 +78,10 @@ yeahconsole.toggleKey: Alt+Return
 yeahconsole.keyBigger: Alt+j
 yeahconsole.keySmaller: Alt+k
 yeahconsole.keyFull: Alt+m
+
+
+TransparentURxvt.depth: 32
+TransparentURxvt.background: rgba:1111/1111/1111/dddd
 
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
