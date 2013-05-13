@@ -3,6 +3,7 @@
 xcompmgr &
 xmodmap $HOME/.config/Xmodmap &
 urxvtd &
+yeahconsole_transparent &
 $WEB_BROWSER &
 $EMAIL_CLIENT &
 $FEED_READER &

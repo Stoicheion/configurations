@@ -80,6 +80,8 @@ yeahconsole.keyBigger: Alt+j
 yeahconsole.keySmaller: Alt+k
 yeahconsole.keyFull: Alt+m
 
+yeahconsole.consoleHeight: 68
+
 
 TransparentURxvt.depth: 32
 TransparentURxvt.background: rgba:1111/1111/1111/dddd
