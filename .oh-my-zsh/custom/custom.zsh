@@ -4,6 +4,8 @@ then
 	source $HOME/.config/private/zshrc
 fi
 setopt no_hup
+HISTSIZE=10000
+SAVEHIST=10000
 
 bindkey -v
 bindkey -M vicmd -rp '^['
