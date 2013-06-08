@@ -1,7 +1,7 @@
 #{{{ Image Movement
 	scroll_left  h
-	scroll_up    j
-	scroll_down  k
+	scroll_down  j
+	scroll_up    k
 	scroll_right l
 	scroll_left_page H
 	scroll_down_page J
