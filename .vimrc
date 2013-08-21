@@ -10,7 +10,8 @@
 	set fileencodings=ucs-bom,utf-8,default,latin1
 	set helplang=en
 	set history=50
-	set modeline
+	set modelines=0
+	set nomodeline
 	set nofoldenable
 	set suffixes=.bak,~,.o,.info,.swp,.obj,.info,.aux,.log,.dvi,.bbl,.out,.o,.lo
 	set viminfo='20,\"500
