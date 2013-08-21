@@ -92,6 +92,8 @@
 		set autoindent
 		set smartindent
 		set cindent
+		set expandtab
+		set shiftwidth=4
 
 		function PerfectFormat()
 			if ((&filetype == "cpp") || (&filetype == "c"))
