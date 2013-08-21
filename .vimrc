@@ -16,24 +16,6 @@
 	set viminfo='20,\"500
 "}}}
 
-"{{{ Indenting and Formatting
-	set autoindent
-	set smartindent
-	set cindent
-
-	function PerfectFormat()
-		if ((&filetype == "cpp") || (&filetype == "c"))
-			set formatprg=indent\ -npsl\ -npcs
-			normal gggqG
-			set formatprg=uncrustify\ -c\ ~/.config/uncrustify/cpp.cfg\ -l\ CPP\ --no-backup\ 2>/dev/null
-			normal gggqG
-			set formatprg=astyle\ --mode=c\ --style=horstmann\ --add-one-line-brackets\ --pad-header\ --align-pointer=type\ --align-reference=type
-			normal gggqG
-			normal gg
-		endif
-	endfunction
-"}}}
-
 "{{{ Display settings
 	set shortmess+=I
 	set title
@@ -104,6 +86,25 @@
 	autocmd VimEnter * call Set_Default_Map()
 	autocmd CmdwinEnter * call Set_Cmd_Win_Map()
 	autocmd CmdwinLeave * call Set_Default_Map()
+
+	"{{{ Indenting and Formatting
+		set autoindent
+		set smartindent
+		set cindent
+
+		function PerfectFormat()
+			if ((&filetype == "cpp") || (&filetype == "c"))
+				set formatprg=indent\ -npsl\ -npcs
+				normal gggqG
+				set formatprg=uncrustify\ -c\ ~/.config/uncrustify/cpp.cfg\ -l\ CPP\ --no-backup\ 2>/dev/null
+				normal gggqG
+				set formatprg=astyle\ --mode=c\ --style=horstmann\ --add-one-line-brackets\ --pad-header\ --align-pointer=type\ --align-reference=type
+				normal gggqG
+				normal gg
+			endif
+		endfunction
+	"}}}
+
 "}}}
 
 "{{{ Window Management
