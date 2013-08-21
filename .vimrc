@@ -7,7 +7,6 @@
 	set incsearch
 	set ignorecase
 	set smartcase
-	set backspace=2
 	set fileencodings=ucs-bom,utf-8,default,latin1
 	set helplang=en
 	set history=50
@@ -59,6 +58,7 @@
 
 "{{{ Input Settings and Key Bindings
 	set timeoutlen=0
+	set backspace=2
 	let s:noremaps = ["H ^","J <C-D>z.","K <C-U>z.","L g_","<C-H> H","<C-L> L","Y y$","<C-J> J","gK K","/ /\\v"]
 	let s:nnoremaps = ["<CR> o<Esc>k","<silent> <C-U> :nohlsearch<CR><C-L>","<silent> <Space> :call SetWindowMode()<CR>","<silent> <leader> :call PerfectFormat()<CR>"]
 	"Only works in gvim:
