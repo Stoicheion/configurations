@@ -3,36 +3,57 @@
 loadplugins '\.(js|penta)$'
 group user
 
-set sanitizeshutdown=cache,commandline,cookies,downloads,formdata,history,marks,offlineapps,registers
-set findflags=rL
-set previouspattern='([←«]|(<<?)) ?(P|p)(R|r)(E|e)(V|v)','\b(P|p)(R|r)(E|e)(V|v)((I|i)(O|o)(U|u)(S|s))?\b','^((<<?)|[←«])$','^((<<?)|[←«])','((<<?)|[←«])$'
-set nextpattern='(N|n)(E|e)(X|x)(T|t) ?([→»]|(>>?))','\b(N|n)(E|e)(X|x)(T|t)\b','^((>>?)|[→»])$','^((>>?)|[→»])','((>>?)|[→»])$','\b(M|m)(O|o)(R|r)(E|e)\b'
-set defsearch=startpage-ssl
-set editor='urxvt -e vim -n <file>'
+"{{{ Commands
+    command sysadmin      -nargs=*
+        \ open gentoo-wiki <args> | archwiki <args> | debian-wiki <args> | funtoo-linux-wiki <args> | unofficial-gentoo-wiki <args>
+    command fullscreenOn  -nargs=0
+        \ set fullscreen
+        \ set guioptions=""
+        \ set showmode=
+    command fullscreenOff -nargs=0
+        \ set nofullscreen
+        \ set guioptions=bCrscn
+        \ set showmode=base,operator
+"}}}
+
+"{{{ Autocommands
+    autocmd Fullscreen on  fullscreenOn
+    autocmd Fullscreen off fullscreenOff
+"}}}
+
+"{{{ Miscellaneous Settings and Startup Tabs
+    set sanitizeshutdown=cache,commandline,cookies,downloads,formdata,history,marks,offlineapps,registers
+    set findflags=rL
+    set previouspattern='([←«]|(<<?)) ?(P|p)(R|r)(E|e)(V|v)','\b(P|p)(R|r)(E|e)(V|v)((I|i)(O|o)(U|u)(S|s))?\b','^((<<?)|[←«])$','^((<<?)|[←«])','((<<?)|[←«])$'
+    set nextpattern='(N|n)(E|e)(X|x)(T|t) ?([→»]|(>>?))','\b(N|n)(E|e)(X|x)(T|t)\b','^((>>?)|[→»])$','^((>>?)|[→»])','((>>?)|[→»])$','\b(M|m)(O|o)(R|r)(E|e)\b'
+    set defsearch=startpage-ssl
+    set editor='urxvt -e vim -n <file>'
+    open dactyl://help/intro
+    bmarks! -tags "daily digest"
+"}}}
 
 "{{{ Appearance
-	colorscheme solarized-dark
-	set showmode=base,operator
-	set guioptions+=c
-	set showtabline=multitab
-	1pintab
-	open dactyl://help/intro
+    colorscheme solarized-dark
+    set showmode=base,operator
+    set guioptions+=cn
+    set showtabline=multitab
+    tabdo pintab
 "}}}
 
 "{{{ Input Settings and Key Bindings
-	set hintkeys=asdfjkl;ghqwertyuiopzxcvbnm,./
-	nmap -builtin J <C-D>
-	nmap -builtin K <C-U>
-	nmap -builtin <C-h> 0
-	nmap -builtin <C-j> <C-f>
-	nmap -builtin <C-k> <C-b>
-	nmap -builtin <C-l> $
-	nmap -builtin <C-/> /\C
+    set hintkeys=asdfjkl;ghqwertyuiopzxcvbnm,./
+    nmap -builtin J <C-D>
+    nmap -builtin K <C-U>
+    nmap -builtin <C-h> 0
+    nmap -builtin <C-j> <C-f>
+    nmap -builtin <C-k> <C-b>
+    nmap -builtin <C-l> $
+    nmap -builtin <C-/> /\C
+    nmap -builtin <C-[> <C-x>
+    nmap -builtin <C-]> <C-a>
+    nmap -builtin ga :bmarks -tags<Space>
 "}}}
 
 "extupdate!
 
 source! $HOME/.config/private/pentadactylrc
-command! -nargs=* sysadmin open gentoo-wiki <args> | archwiki <args> | debian-wiki <args> | funtoo-linux-wiki <args> | unofficial-gentoo-wiki <args>
-
-" vim: set ft=pentadactyl:
