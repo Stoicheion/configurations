@@ -52,6 +52,8 @@ group user
     nmap -builtin <C-[> <C-x>
     nmap -builtin <C-]> <C-a>
     nmap -builtin ga :bmarks -tags<Space>
+    nmap -builtin g<C-n> :tabmove +1<Return>
+    nmap -builtin g<C-p> :tabmove -1<Return>
 "}}}
 
 "extupdate!
