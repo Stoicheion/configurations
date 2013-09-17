@@ -42,8 +42,9 @@ group user
 
 "{{{ Input Settings and Key Bindings
     set hintkeys=asdfjkl;ghqwertyuiopzxcvbnm,./
-    nmap -builtin J <C-D>
-    nmap -builtin K <C-U>
+    "-count for J and K to prevent changing 'scroll' option accidentally
+    nmap -builtin -count J <C-D>
+    nmap -builtin -count K <C-U>
     nmap -builtin <C-h> 0
     nmap -builtin <C-j> <C-f>
     nmap -builtin <C-k> <C-b>
