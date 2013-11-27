@@ -53,6 +53,7 @@ group user
     nmap -builtin <C-[> <C-x>
     nmap -builtin <C-]> <C-a>
     nmap -builtin ga :bmarks -tags<Space>
+    nmap -builtin gA :bmarks! -tags<Space>
     nmap -builtin -count g<C-n> :execute "tabmove " + (function(n) { return n === void 0 ? "+1" : n.toString() })(<count>);<Return>
     nmap -builtin -count g<C-p> :execute "tabmove " + (function(n) { return n === void 0 ? "-1" : n.toString() })(<count>);<Return>
 "}}}
