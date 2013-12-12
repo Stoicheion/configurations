@@ -1,0 +1,7 @@
+set format_title=%{artist} - %{album} - %{title} (%{originaldate})
+set format_current= %{artist} - %{album} -%3{tracknumber}. %{title}%= %{originaldate}; %{date} 
+set format_trackwin=%3{tracknumber}. %{title}%= %{originaldate}; %{date} %{duration} 
+set format_trackwin_va=%3{tracknumber}. %{title} (%{artist})%= %{originaldate}; %{date} %{duration} 
+set format_playlist= %-13%{artist} - %-13%{album} -%3{tracknumber}. %{title}%= %{originaldate}; %{date} %{duration} 
+set format_playlist_va= %-13%{albumartist} - %-13%{album} -%3{tracknumber}. %{title} (%{artist})%= %{originaldate}; %{date} %{duration} 
+set lib_sort=albumartist originaldate date album discnumber tracknumber title filename
