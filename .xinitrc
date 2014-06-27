@@ -1,7 +1,1 @@
-case $1 in
-  awesome) exec awesome ;;
-  dwm    ) exec dwm     ;;
-  xmonad ) exec xmonad  ;;
-  openbox) exec openbox ;;
-  * ) exec dwm ;;
-esac
+.config/xinitrc
