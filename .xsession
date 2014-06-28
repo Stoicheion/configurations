@@ -5,4 +5,4 @@ xmodmap $HOME/.config/Xmodmap &
 urxvtd &
 start-pulseaudio-x11 &
 
-exec $HOME/.xinitrc
+exec $HOME/.xinitrc awesome
