@@ -1,9 +1,5 @@
 #!/bin/sh
 
-xrdb -load $HOME/.Xresources &
-start-pulseaudio-x11 &
-xmodmap $HOME/.config/Xmodmap &
-urxvtd &
 $WEB_BROWSER &
 $EMAIL_CLIENT &
 $FEED_READER &
