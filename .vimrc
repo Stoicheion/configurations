@@ -18,6 +18,7 @@
 "}}}
 
 "{{{ Display settings
+        set guifont=AnonymousPro\ for\ Powerline\ 11
 	set shortmess+=I
 	set title
 	set guioptions=aegitc
@@ -202,6 +203,13 @@ autocmd BufNewFile * call Initialize_New_File()
 "}}}
 
 "{{{ Plugins
+	"{{{ Powerline
+	python3 from powerline.vim import setup as powerline_setup
+	python3 powerline_setup()
+	python3 del powerline_setup
+        set laststatus=2
+        set noshowmode
+        "}}}
 	let g:ConqueTerm_TERM = 'vt100'
 	let g:snippets_dir = $HOME . "/.vim/snippets"
 	"let g:solarized_termtrans = 1

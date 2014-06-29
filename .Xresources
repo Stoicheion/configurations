@@ -53,17 +53,10 @@ URxvt*saveLines: 4096
 URxvt*underlineURLs:   true
 URxvt*cursorBlink: false
 URxvt*underlineColor: yellow
-!!URxvt*font:		xft:Inconsolata-LGC:size=10:antialias=true
-!!URxvt*italicFont:	xft:Inconsolata-LGC-Italic:size=10:antialias=true
-!URxvt*font:		xft:Monaco for Powerline:regular:size=8:antialias=true
-!URxvt*imFont:		xft:Monaco for Powerline:regular:size=8:size=10:antialias=true
-!URxvt*boldFont:	xft:Monaco for Powerline:bold:size=8:size=10:antialias=true
-!URxvt*italicFont:	xft:Monaco for Powerline:italic:size=8:size=10:antialias=true
-!URxvt*boldItalicFont:	xft:Monaco for Powerline:bold:italic:size=8:size=10:antialias=true
-URxvt*font:		xft:Consolas for Powerline:regular:size=10:antialias=true
-URxvt*boldFont:		xft:Consolas for Powerline:BoldForPowerline:size=10:antialias=true
-URxvt*italicFont:	xft:Consolas for Powerline:ItalicForPowerline:size=10:antialias=true
-URxvt*boldItalicFont:	xft:Consolas for Powerline:Bold Italic:size=10:antialias=true
+URxvt*font:		xft:AnonymousPro for Powerline:regular:size=11:antialias=true
+URxvt*boldFont:		xft:AnonymousPro for Powerline:BoldForPowerline:size=11:antialias=true
+URxvt*italicFont:	xft:AnonymousPro for Powerline:ItalicForPowerline:size=11:antialias=true
+URxvt*boldItalicFont:	xft:AnonymousPro for Powerline:Bold Italic:size=11:antialias=true
 
 URxvt*depth: 32
 URxvt*borderless: true
