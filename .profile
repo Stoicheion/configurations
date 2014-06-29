@@ -10,7 +10,8 @@
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$PATH:$HOME/bin"
+    export PATH="$PATH:$HOME/bin"
 fi
+export EDITOR=vim
 
 eval `dircolors $HOME/.config/dir_colors`

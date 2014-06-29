@@ -19,6 +19,3 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(vi-mode git)
 
 source $ZSH/oh-my-zsh.sh
-
-export PATH=/usr/local/bin:$PATH:$HOME/bin
-export EDITOR=vim
