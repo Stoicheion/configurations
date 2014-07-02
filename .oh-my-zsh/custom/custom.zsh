@@ -1,7 +1,3 @@
-if [ -f $HOME/.profile ]; then
-    source $HOME/.profile
-fi
-
 setopt no_hup
 HISTSIZE=10000
 SAVEHIST=10000
