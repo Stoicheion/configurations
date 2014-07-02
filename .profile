@@ -11,7 +11,7 @@
 #umask 022
 
 #uim-fep will launch $SHELL _again_, so this should run before anything else.
-if [ "$TERM" = "linux" ] && [ -z "$UIM_FEP_PID" ]; then
+if [ -z "$DISPLAY" ] && [ "$TERM" = "linux" ] && [ -z "$UIM_FEP_PID" ]; then
     exec uim-fep
 fi
 
