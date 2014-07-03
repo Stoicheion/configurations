@@ -1,3 +1,3 @@
-if [ -f $HOME/.profile ]; then
-    emulate sh -c "source $HOME/.profile"
+if [ -f $HOME/.config/shells/profile ]; then
+    source $HOME/.config/shells/profile
 fi
