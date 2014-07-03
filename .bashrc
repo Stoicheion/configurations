@@ -14,8 +14,4 @@ if [ -f $HOME/.profile ]; then
     source $HOME/.profile
 fi
 
-if [ -f $HOME/.config/private/bashrc ]; then
-    source $HOME/.config/private/bashrc
-fi
-
 set -o vi
