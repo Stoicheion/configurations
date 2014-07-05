@@ -1,3 +1,7 @@
 #!/bin/sh
 
 clear
+
+if command -v reset; then
+    reset
+fi
