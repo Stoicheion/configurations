@@ -6,3 +6,9 @@ fi
 export EDITOR=vim
 
 eval `dircolors $HOME/.config/dir_colors`
+
+source_if_possible() {
+    if [ -f $@ ] && [ -r $@ ]; then
+        source $@
+    fi
+}
