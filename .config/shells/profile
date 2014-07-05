@@ -3,8 +3,12 @@
 source "$HOME/.config/shells/environment"
 
 #uim-fep will launch $SHELL _again_, so this should run before starting any other services.
-if is_shell_interactive && [ -z "$DISPLAY" ] && [ "$TERM" = "linux" ] && [ -z "$UIM_FEP_PID" ]; then
-    exec uim-fep
+if is_shell_interactive; then
+    if [ -z "$DISPLAY" ] && [ "$TERM" = "linux" ]; then
+        if [ -z "$UIM_FEP_PID" ]; then
+            exec uim-fep
+        fi
+        make_linux_console_solarized_dark&
+    fi
 fi
 
-make_linux_console_solarized_dark&
