@@ -1,5 +1,7 @@
 #!/bin/zsh
 
-if [ -f $HOME/.config/shells/logout ]; then
-    source $HOME/.config/shells/logout
+local logout_file="$HOME/.config/shells/logout"
+
+if [ -f $logout_file ] && [ -r $logout_file ]; then
+    source $logout_file
 fi
