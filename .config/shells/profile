@@ -9,7 +9,7 @@ if is_shell_interactive; then
         if [ -z "$UIM_FEP_PID" ]; then
             exec uim-fep
         fi
-        make_linux_console_solarized_dark&
+        make_linux_console_solarized_dark
     fi
 fi
 
