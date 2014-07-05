@@ -45,7 +45,7 @@
 !!	}}}
 !!}}}
 
-URxvt*loginShell: true
+URxvt*loginShell: false
 URxvt*perl-ext-common: url-select,urxvi
 URxvt*urlLauncher:     xdg-open
 URxvt*buffered: true
