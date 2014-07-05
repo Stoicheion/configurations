@@ -6,3 +6,5 @@ source "$HOME/.config/shells/environment"
 if is_shell_interactive && [ -z "$DISPLAY" ] && [ "$TERM" = "linux" ] && [ -z "$UIM_FEP_PID" ]; then
     exec uim-fep
 fi
+
+make_linux_console_solarized_dark&
