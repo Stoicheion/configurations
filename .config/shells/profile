@@ -1,6 +1,7 @@
 #!/bin/sh
 
-source "$HOME/.config/shells/environment"
+#$HOME/bin isn't necessarily in $PATH yet.
+source "$($HOME/bin/xdg_config_home)/shells/environment"
 
 #uim-fep will launch $SHELL _again_, so this should run before starting any other services.
 if is_shell_interactive; then

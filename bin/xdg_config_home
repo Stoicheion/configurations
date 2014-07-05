@@ -1,0 +1,12 @@
+#!/bin/sh
+
+main () {
+    if [ -z "$XDG_CONFIG_HOME" ]; then
+        echo "$HOME/.config"
+    else
+        echo "$XDG_CONFIG_HOME"
+    fi
+}
+
+main
+unset -f main
