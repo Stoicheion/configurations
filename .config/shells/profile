@@ -14,11 +14,3 @@
 if [ -z "$DISPLAY" ] && [ "$TERM" = "linux" ] && [ -z "$UIM_FEP_PID" ]; then
     exec uim-fep
 fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    export PATH="$PATH:$HOME/bin"
-fi
-export EDITOR=vim
-
-eval `dircolors $HOME/.config/dir_colors`

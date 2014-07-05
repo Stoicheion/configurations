@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -d "$HOME/bin" ] ; then
+    export PATH="$PATH:$HOME/bin"
+fi
+export EDITOR=vim
+
+eval `dircolors $HOME/.config/dir_colors`
