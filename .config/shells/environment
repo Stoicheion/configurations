@@ -12,3 +12,10 @@ source_if_possible() {
         source $@
     fi
 }
+
+is_shell_interactive() {
+    case $- in
+        *i*) return 0;;
+          *) return 1;;
+    esac
+}

@@ -1,6 +1,8 @@
 #!/bin/sh
 
+source "$HOME/.config/shells/environment"
+
 #uim-fep will launch $SHELL _again_, so this should run before starting any other services.
-if [ -z "$DISPLAY" ] && [ "$TERM" = "linux" ] && [ -z "$UIM_FEP_PID" ]; then
+if is_shell_interactive && [ -z "$DISPLAY" ] && [ "$TERM" = "linux" ] && [ -z "$UIM_FEP_PID" ]; then
     exec uim-fep
 fi
