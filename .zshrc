@@ -1,4 +1,8 @@
-# Path to your oh-my-zsh installation.
+#!/bin/zsh
+
+source_if_possible "$($HOME/bin/xdg_config_home)/shells/profile"
+
+# Path to oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
