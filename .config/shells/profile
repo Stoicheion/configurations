@@ -7,7 +7,8 @@ source "$($HOME/bin/xdg_config_home)/shells/environment"
 if is_shell_interactive; then
     if [ -z "$DISPLAY" ] && [ "$TERM" = "linux" ]; then
         if [ -z "$UIM_FEP_PID" ]; then
-            exec uim-fep
+            #Note: -l is not defined by POSIX
+            exec uim-fep -e "$SHELL" "-l"
         fi
         make_linux_console_solarized_dark
     fi
