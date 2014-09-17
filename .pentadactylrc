@@ -22,7 +22,7 @@ group user
 "}}}
 
 "{{{ Miscellaneous Settings and Startup Tabs
-    set sanitizeshutdown=cache,commandline,cookies,downloads,formdata,history,marks,offlineapps,registers
+    set sanitizeshutdown=cache,commandline,downloads,formdata,history,marks,offlineapps,registers
     set findflags=rL
     set previouspattern='([←«]|(<<?)) ?(P|p)(R|r)(E|e)(V|v)','\b(P|p)(R|r)(E|e)(V|v)((I|i)(O|o)(U|u)(S|s))?\b','^((<<?)|[←«])$','^((<<?)|[←«])','((<<?)|[←«])$'
     set nextpattern='(N|n)(E|e)(X|x)(T|t) ?([→»]|(>>?))','\b(N|n)(E|e)(X|x)(T|t)\b','^((>>?)|[→»])$','^((>>?)|[→»])','((>>?)|[→»])$','\b(M|m)(O|o)(R|r)(E|e)\b'
