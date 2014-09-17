@@ -14,6 +14,10 @@ group user
         \ set nofullscreen
         \ set guioptions=bCrscn
         \ set showmode=base,operator
+    command dailyDigest -nargs=0
+        \ open dactyl://help/intro 
+        \ bmarks! -tags "daily digest"
+        \ tabdo pintab
 "}}}
 
 "{{{ Autocommands
@@ -28,8 +32,6 @@ group user
     set nextpattern='(N|n)(E|e)(X|x)(T|t) ?([→»]|(>>?))','\b(N|n)(E|e)(X|x)(T|t)\b','^((>>?)|[→»])$','^((>>?)|[→»])','((>>?)|[→»])$','\b(M|m)(O|o)(R|r)(E|e)\b'
     set defsearch=startpage-ssl
     set editor='urxvt -e vim -n <file>'
-    open dactyl://help/intro
-    bmarks! -tags "daily digest"
 "}}}
 
 "{{{ Appearance
@@ -37,7 +39,6 @@ group user
     set showmode=base,operator
     set guioptions+=cn
     set showtabline=multitab
-    tabdo pintab
 "}}}
 
 "{{{ Input Settings and Key Bindings
