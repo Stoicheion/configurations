@@ -15,7 +15,6 @@ group user
         \ set guioptions=bCrscn
         \ set showmode=base,operator
     command dailyDigest -nargs=0
-        \ open dactyl://help/intro 
         \ bmarks! -tags "daily digest"
         \ tabdo pintab
 "}}}
