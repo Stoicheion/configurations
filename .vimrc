@@ -171,7 +171,7 @@
 "}}}
 
 "{{{ Settings for Specific Filetypes
-    function! Insert_Include_Guards()
+    function Insert_Include_Guards()
         let filename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
         let time = localtime()
         let uuid = substitute(matchstr(system("uuidgen"), "[^\n\r]*"), "-", "_", "g")
