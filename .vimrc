@@ -173,12 +173,11 @@
 "{{{ Settings for Specific Filetypes
     function Insert_Include_Guards()
         let filename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-        let time = localtime()
-        let uuid = substitute(matchstr(system("uuidgen"), "[^\n\r]*"), "-", "_", "g")
-        execute "normal! ggO#ifndef " . filename . "_" . time  . "_" . uuid
-        execute "normal! o#define " . filename . "_" . time . "_" . uuid . " "
+        let uuid = substitute(matchstr(system("uuidgen --time"), "[^\n\r]*"), "-", "_", "g")
+        execute "normal! ggO#ifndef " . filename . "_" . uuid
+        execute "normal! o#define " . filename . "_" . uuid
         normal! o
-        execute "normal! Go#endif /* " . filename . "_" . time . "_" . uuid . " */"
+        execute "normal! Go#endif /* " . filename . "_" . uuid . " */"
         normal! O
         normal! ggjj
     endfunction
