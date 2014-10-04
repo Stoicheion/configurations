@@ -129,7 +129,7 @@
 	endfunction
 
 	function WindowModeStatus()
-		if (g:WinModeSet == 1)
+		if (g:WinModeSet)
 			echo "-- WINDOW --"
 		else
 			echo ""
@@ -137,7 +137,7 @@
 	endfunction
 
 	function SetWindowMode()
-		if (g:WinModeSet == 0)
+		if (!g:WinModeSet)
 			let g:WinModeSet = 1
 			nnoremap <silent> h :call WinMove('h')<CR>
 			nnoremap <silent> j :call WinMove('j')<CR>
@@ -154,7 +154,7 @@
 	endfunction
  
 	function UnsetWindowMode()
-		if (g:WinModeSet == 1)
+		if (g:WinModeSet)
 			unmap h
 			unmap j
 			unmap k
