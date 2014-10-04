@@ -172,15 +172,25 @@
 
 "{{{ Settings for Specific Filetypes
     function Insert_Include_Guards()
-        let filename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-        let uuid = substitute(matchstr(system("uuidgen --time"), "[^\n\r]*"), "-", "_", "g")
-        execute "normal! ggO#ifndef " . filename . "_" . uuid
-        execute "normal! o#define " . filename . "_" . uuid
+        let filename = expand("%:t")
+        if (empty(filename))
+            throw "No filename available to generate include guards."
+        endif
+        let capitalized_filename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+        let uuid_command = "uuidgen --time"
+        let uuid = system(uuid_command)
+        if (v:shell_error)
+            throw "Calling “" . uuid_command . "” in order to generate include guards failed with output: “" . uuid. "”"
+        endif
+        let snake_case_uuid = substitute(matchstr(uuid, "[^\n\r]*"), "-", "_", "g")
+        execute "normal! ggO#ifndef " . capitalized_filename . "_" . snake_case_uuid
+        execute "normal! o#define " . capitalized_filename . "_" . snake_case_uuid
         normal! o
-        execute "normal! Go#endif /* " . filename . "_" . uuid . " */"
+        execute "normal! Go#endif /* " . capitalized_filename . "_" . snake_case_uuid . " */"
         normal! O
         normal! ggjj
     endfunction
+
     function Initialize_New_File()
         if (&filetype == "c_header")
             if (! &readonly)
