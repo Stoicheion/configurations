@@ -44,11 +44,11 @@
     set timeoutlen=0
     set backspace=2
     let s:noremaps = ["H ^","J <C-D>z.","K <C-U>z.","L g_","<C-H> H","<C-L> L","Y y$","<C-J> J","gK K","/ /\\v"]
-    let s:nnoremaps = ["<CR> o<Esc>k","<silent> <C-U> :nohlsearch<CR><C-L>","<silent> <Space> :call SetWindowMode()<CR>","<silent> <leader> :call PerfectFormat()<CR>"]
+    let s:nnoremaps = ["<Enter> o<Esc>k","<silent> <C-U> :nohlsearch<Enter><C-L>","<silent> <Space> :call SetWindowMode()<Enter>","<silent> <leader> :call PerfectFormat()<Enter>"]
     "Only works in gvim:
-    let s:gui_nnoremaps = ["<S-Enter> O<Esc>j","<silent> <C-Enter> :call Execute_RHS_of_Cursor()<CR>","<silent> <C-S-Enter> :call Execute_Current_Line()<CR>"]
+    let s:gui_nnoremaps = ["<S-Enter> O<Esc>j","<silent> <C-Enter> :call Execute_RHS_of_Cursor()<Enter>","<silent> <C-S-Enter> :call Execute_Current_Line()<Enter>"]
     "Only works with appropriate keys (Shift+Enter/Ctrl+Enter/Ctrl+Shift+Enter) when in a customized terminal.
-    let s:term_nnoremaps = ["[26$ O<Esc>j","<silent> [26^ :call Execute_RHS_of_Cursor()<CR>","<silent> [26@ :call Execute_Current_Line()<CR>"]
+    let s:term_nnoremaps = ["[26$ O<Esc>j","<silent> [26^ :call Execute_RHS_of_Cursor()<Enter>","<silent> [26@ :call Execute_Current_Line()<Enter>"]
     function Execute_RHS_of_Cursor()
         normal! "zy$
         normal! @z
@@ -73,7 +73,7 @@
                 execute "nnoremap " . binding
             endfor
         endif
-        autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<CR>
+        autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<Enter>
     endfunction
     function Set_Cmd_Win_Map()
             if has("gui_running")
@@ -81,7 +81,7 @@
             else
                 nunmap [26$
             endif
-            nunmap <CR>
+            nunmap <Enter>
     endfunction
     autocmd VimEnter * call Set_Default_Map()
     autocmd CmdwinEnter * call Set_Cmd_Win_Map()
@@ -137,16 +137,16 @@
     function SetWindowMode()
         if (!g:WinModeSet)
             let g:WinModeSet = 1
-            nnoremap <silent> h :call WinMove('h')<CR>
-            nnoremap <silent> j :call WinMove('j')<CR>
-            nnoremap <silent> k :call WinMove('k')<CR>
-            nnoremap <silent> l :call WinMove('l')<CR>
-            nnoremap <silent> d :wincmd q<CR>
+            nnoremap <silent> h :call WinMove('h')<Enter>
+            nnoremap <silent> j :call WinMove('j')<Enter>
+            nnoremap <silent> k :call WinMove('k')<Enter>
+            nnoremap <silent> l :call WinMove('l')<Enter>
+            nnoremap <silent> d :wincmd q<Enter>
             nnoremap <silent> r <C-W>r
-            nnoremap <silent> H :3wincmd <<CR>
-            nnoremap <silent> J :3wincmd -<CR>
-            nnoremap <silent> K :3wincmd +<CR>
-            nnoremap <silent> L :3wincmd ><CR>
+            nnoremap <silent> H :3wincmd <<Enter>
+            nnoremap <silent> J :3wincmd -<Enter>
+            nnoremap <silent> K :3wincmd +<Enter>
+            nnoremap <silent> L :3wincmd ><Enter>
         endif
             call WindowModeStatus()
     endfunction
