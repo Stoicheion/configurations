@@ -46,7 +46,7 @@
     let s:noremaps = ["H ^","J <C-D>z.","K <C-U>z.","L g_","<C-H> H","<C-L> L","Y y$","<C-J> J","gK K","/ /\\v"]
     let s:nnoremaps = ["<Enter> o<Esc>k","<silent> <C-U> :nohlsearch<Enter><C-L>","<silent> <Space> :call SetWindowMode()<Enter>","<silent> <leader> :call PerfectFormat()<Enter>"]
     "Only works in gvim:
-    let s:gui_nnoremaps = ["<S-Enter> O<Esc>j","<silent> <C-Enter> :call Execute_RHS_of_Cursor()<Enter>","<silent> <C-S-Enter> :call Execute_Current_Line()<Enter>"]
+    let s:gui_nnoremaps = ["<silent> <special> <Esc> :call UnsetWindowMode()<Enter>", "<S-Enter> O<Esc>j","<silent> <C-Enter> :call Execute_RHS_of_Cursor()<Enter>","<silent> <C-S-Enter> :call Execute_Current_Line()<Enter>"]
     "Only works with appropriate keys (Shift+Enter/Ctrl+Enter/Ctrl+Shift+Enter) when in a customized terminal.
     let s:term_nnoremaps = ["[26$ O<Esc>j","<silent> [26^ :call Execute_RHS_of_Cursor()<Enter>","<silent> [26@ :call Execute_Current_Line()<Enter>"]
     function Execute_RHS_of_Cursor()
@@ -72,8 +72,8 @@
             for binding in s:term_nnoremaps
                 execute "nnoremap " . binding
             endfor
+            autocmd TermResponse * nnoremap <silent> <special> <Esc> :call UnsetWindowMode()<Enter>
         endif
-        autocmd TermResponse * map <silent> <special> <Esc> :call UnsetWindowMode()<Enter>
     endfunction
     function Set_Cmd_Win_Map()
             if has("gui_running")
@@ -110,7 +110,7 @@
 "}}}
 
 "{{{ Window Management
-    let g:WinModeSet = 0
+    let s:WinModeSet = 0
     "autocmd VimResized * call WindowModeStatus()
 
     function WinMove(key)
@@ -127,7 +127,7 @@
     endfunction
 
     function WindowModeStatus()
-        if (g:WinModeSet)
+        if (s:WinModeSet)
             echo "-- WINDOW --"
         else
             echo ""
@@ -135,8 +135,8 @@
     endfunction
 
     function SetWindowMode()
-        if (!g:WinModeSet)
-            let g:WinModeSet = 1
+        if (!s:WinModeSet)
+            let s:WinModeSet = 1
             nnoremap <silent> h :call WinMove('h')<Enter>
             nnoremap <silent> j :call WinMove('j')<Enter>
             nnoremap <silent> k :call WinMove('k')<Enter>
@@ -152,7 +152,7 @@
     endfunction
 
     function UnsetWindowMode()
-        if (g:WinModeSet)
+        if (s:WinModeSet)
             unmap h
             unmap j
             unmap k
@@ -164,9 +164,9 @@
             unmap K
             unmap L
         endif
-        let g:WinModeSet = 0
-        call WindowModeStatus()
+        let s:WinModeSet = 0
         call Set_Default_Map()
+        call WindowModeStatus()
     endfunction
 "}}}
 
