@@ -1,0 +1,6 @@
+[submodule "submodules/vimbed"]
+	path = submodules/vimbed
+	url = git@github.com:ARCADIVS/vimbed.git
+[submodule "submodules/pterosaur"]
+	path = submodules/pterosaur
+	url = git@github.com:ARCADIVS/pterosaur.git

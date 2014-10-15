@@ -58,6 +58,10 @@ group user
     nmap -builtin -count g<C-p> :execute "tabmove " + (function(n) { return n === void 0 ? "-1" : n.toString() })(<count>);<Return>
 "}}}
 
+"{{{ Plugins
+    set fullvim
+"}}}
+
 "extupdate!
 
 source! $HOME/.config/private/pentadactylrc
