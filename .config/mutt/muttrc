@@ -1,0 +1,97 @@
+unset move
+unset record
+set mbox_type		=	Maildir
+set mail_check		=	0
+set beep_new
+set pipe_decode
+#{{{ File Organization
+	set folder = "~/mail/"
+	set alias_file		=	"~/.mutt/alias"
+	set header_cache	=	"~/.mutt/cache/headers"
+	set message_cachedir	=	"~/.mutt/cache/bodies"
+	set certificate_file	=	"~/.mutt/certificates"
+	set mailcap_path	=	"~/.mutt/mailcap"
+	set tmpdir		=	"~/.mutt/temp"
+#}}}
+
+#{{{ Interface Settings and Key Bindings
+	unset confirmappend
+	set sendmail_wait	=		0
+	set thorough_search
+	set quit
+	set pager_stop
+	set menu_scroll
+	set timeout		=		3
+	set wait_key		=		no
+	bind index		gg		first-entry
+	bind index		G		last-entry
+	bind index		R		group-reply
+	bind index		<tab>		sync-mailbox
+	bind index		<space>		collapse-thread
+	bind index		J		next-thread
+	bind index		K		previous-thread
+	bind index		N		search-opposite
+	bind index		p		recall-message
+	macro index 		O		"<shell-escape>offlineimap<enter>"
+	macro index 		o		"<shell-escape>offlineimap -qf INBOX<enter>"
+	macro index 		C		"<copy-message>?<toggle-mailboxes>"
+	macro index 		M		"<save-message>?<toggle-mailboxes>"
+	macro index		\Cu		"<limit>all\n"
+	bind index,pager	\Cn		sidebar-next
+	bind index,pager	\Cp		sidebar-prev
+	bind index,pager	\Co		sidebar-open
+	bind pager		<esc>		exit
+	bind pager		k		previous-line
+	bind pager		j		next-line
+	bind pager		gg		top
+	bind pager		G		bottom
+	bind pager		R		group-reply
+	bind pager		N		search-opposite
+	bind attach		<return>	view-mailcap
+	bind compose		p		postpone-message
+#}}}
+
+#{{{ Email Composition
+	set editor		=	"vim"
+	set forward_format	=	"Fwd: %s"
+	set attribution		=	"On %d, %n wrote:" # format of quoting header
+	set edit_headers
+	set fast_reply
+	set askcc
+	set fcc_attach
+	unset mime_forward"
+	set forward_decode
+	set reply_to
+	set reverse_name
+	set include
+	set forward_quote
+#}}}
+
+#{{{ Appearance
+	set status_chars  = " *%A"
+	set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+	set sidebar_delim	=	'  │'
+	set sidebar_visible	=	yes
+	set sidebar_width	=	24
+
+	#{{{ Index
+		set sort		=	'threads'
+		set date_format		=	"%d/%m/%Y"
+		set index_format	=	"[%Z]│%D│%-20.20F│%-20.20a│%-20.20L│%s"
+		set sort_aux		=	reverse-last-date-received
+		set uncollapse_jump
+		set sort_re
+		set reply_regexp	=	"^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+	#}}}
+
+	#{{{ Pager
+		set pager_index_lines	=	10
+		set pager_context	=	3
+		set quote_regexp	=	"^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+		alternative_order text/plain text/enriched text/htmlset tilde
+	#}}}
+
+	#{{{ Colors
+                source ~/.config/mutt/colorschemes/default.muttrc
+	#}}}
+#}}}

@@ -13,3 +13,9 @@
 [submodule "submodules/dircolors-solarized"]
 	path = submodules/dircolors-solarized
 	url = git@github.com:ARCADIVS/dircolors-solarized.git
+[submodule "submodules/solarized"]
+	path = submodules/solarized
+	url = git@github.com:ARCADIVS/solarized.git
+[submodule "submodules/xresources"]
+	path = submodules/xresources
+	url = git@github.com:ARCADIVS/xresources.git

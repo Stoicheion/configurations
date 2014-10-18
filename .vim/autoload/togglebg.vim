@@ -1,0 +1,1 @@
+/home/richter/submodules/solarized/vim-colors-solarized/autoload/togglebg.vim
