@@ -7,3 +7,6 @@
 [submodule "submodules/oh-my-zsh"]
 	path = submodules/oh-my-zsh
 	url = git@github.com:ARCADIVS/oh-my-zsh.git
+[submodule "submodules/pentadactyl-solarized"]
+	path = submodules/pentadactyl-solarized
+	url = git@github.com:ARCADIVS/pentadactyl-solarized.git
