@@ -10,3 +10,6 @@
 [submodule "submodules/pentadactyl-solarized"]
 	path = submodules/pentadactyl-solarized
 	url = git@github.com:ARCADIVS/pentadactyl-solarized.git
+[submodule "submodules/dircolors-solarized"]
+	path = submodules/dircolors-solarized
+	url = git@github.com:ARCADIVS/dircolors-solarized.git
