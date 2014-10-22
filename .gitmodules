@@ -19,3 +19,6 @@
 [submodule "submodules/xresources"]
 	path = submodules/xresources
 	url = git@github.com:ARCADIVS/xresources.git
+[submodule "submodules/VimOrganizer"]
+	path = submodules/VimOrganizer
+	url = git@github.com:ARCADIVS/VimOrganizer.git
