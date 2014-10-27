@@ -1,0 +1,1 @@
+/home/richter/submodules/ultisnips/after/plugin/UltiSnips_after.vim

@@ -1,0 +1,1 @@
+/home/richter/submodules/ultisnips/autoload/neocomplete/sources/ultisnips.vim

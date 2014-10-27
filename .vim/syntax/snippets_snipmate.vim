@@ -1,0 +1,1 @@
+/home/richter/submodules/ultisnips/syntax/snippets_snipmate.vim

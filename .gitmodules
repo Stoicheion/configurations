@@ -22,3 +22,9 @@
 [submodule "submodules/VimOrganizer"]
 	path = submodules/VimOrganizer
 	url = git@github.com:ARCADIVS/VimOrganizer.git
+[submodule "submodules/vim-snippets"]
+	path = submodules/vim-snippets
+	url = git@github.com:ARCADIVS/vim-snippets.git
+[submodule "submodules/ultisnips"]
+	path = submodules/ultisnips
+	url = git@github.com:ARCADIVS/ultisnips.git

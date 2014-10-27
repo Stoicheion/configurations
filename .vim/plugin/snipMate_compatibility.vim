@@ -1,0 +1,1 @@
+/home/richter/submodules/ultisnips/plugin/snipMate_compatibility.vim
