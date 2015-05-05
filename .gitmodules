@@ -28,3 +28,6 @@
 [submodule "submodules/ultisnips"]
 	path = submodules/ultisnips
 	url = git@github.com:ARCADIVS/ultisnips.git
+[submodule "submodules/st-config"]
+	path = submodules/st-config
+	url = git@github.com:ARCADIVS/st-config.git
