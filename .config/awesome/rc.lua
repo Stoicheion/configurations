@@ -373,7 +373,7 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule_any = { class = { "URxvt", "xterm", "Gvim", "Gview", "Emacs" } },
+    { rule_any = { class = { "st", "URxvt", "xterm", "Gvim", "Gview", "Emacs" } },
       properties = { size_hints_honor = false } },
     { rule = { class = "Tilda" },
       properties = { floating = true } },
