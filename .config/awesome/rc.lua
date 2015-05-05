@@ -229,10 +229,10 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
     -- {{{ Movement
-    awful.key({ modkey,           }, "h", function () awful.client.focus.bydirection("left") end),
-    awful.key({ modkey,           }, "j", function () awful.client.focus.bydirection("down") end),
-    awful.key({ modkey,           }, "k", function () awful.client.focus.bydirection("up") end),
-    awful.key({ modkey,           }, "l", function () awful.client.focus.bydirection("right") end),
+    awful.key({ modkey,           }, "h", function () awful.client.focus.global_bydirection("left") end),
+    awful.key({ modkey,           }, "j", function () awful.client.focus.global_bydirection("down") end),
+    awful.key({ modkey,           }, "k", function () awful.client.focus.global_bydirection("up") end),
+    awful.key({ modkey,           }, "l", function () awful.client.focus.global_bydirection("right") end),
     awful.key({ modkey,           }, "n",
         function ()
             awful.client.focus.byidx( 1)
